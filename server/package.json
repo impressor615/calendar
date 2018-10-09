@@ -8,6 +8,7 @@
   "author": "seonghyeon",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.2",
     "express": "^4.16.3"
   },
   "devDependencies": {
