@@ -2,7 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "test": "NODE_ENV=test mocha -r ./test/setup.js --recursive --exit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
   },
   "main": "app.js",
   "author": "seonghyeon",
@@ -12,9 +18,12 @@
     "express": "^4.16.3"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.4"
   }
 }
