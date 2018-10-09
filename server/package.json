@@ -10,6 +10,11 @@
       "pre-commit": "npm test"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
   "main": "app.js",
   "author": "seonghyeon",
   "license": "ISC",
@@ -23,6 +28,7 @@
     "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "husky": "^1.1.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4"
   }
