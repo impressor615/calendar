@@ -10,5 +10,7 @@ module.exports = {
       {"devDependencies": ["**/test/**/*.js"]},
     ],
     "camelcase": "off",
+    "no-unused-expressions": "off",
+    "consistent-return": "off",
   },
 };
