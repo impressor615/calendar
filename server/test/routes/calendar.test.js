@@ -48,6 +48,17 @@ describe('Calendar Router', () => {
       assertError(res.error.text, route_invalid_data);
     });
 
+    it('should return error when start_date is greater than end_date', async () => {
+      const invalidPostData = {
+        title: 'title',
+        start_date: moment().add(1, 'days').toISOString(),
+        end_date: moment().toISOString(),
+      };
+      const res = await chai.request(app).post('/api/calendar').send(invalidPostData);
+      res.status.should.be.equal(500);
+      assertError(res.error.text, route_invalid_data);
+    });
+
     it('should create calendar events successfully', async () => {
       const res = await chai.request(app)
         .post('/api/calendar')
@@ -98,6 +109,17 @@ describe('Calendar Router', () => {
 
     it('should return error if nothing exsist in request body', async () => {
       const res = await chai.request(app).put(`/api/calendar/${calendarId}`);
+      res.status.should.be.equal(500);
+      assertError(res.error.text, route_invalid_data);
+    });
+
+    it('should return error when start_date is greater than end_date', async () => {
+      const invalidPutData = {
+        title: 'title',
+        start_date: moment().add(1, 'days').toISOString(),
+        end_date: moment().toISOString(),
+      };
+      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).send(invalidPutData);
       res.status.should.be.equal(500);
       assertError(res.error.text, route_invalid_data);
     });

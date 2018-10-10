@@ -13,6 +13,11 @@ router.post('/', async (req, res) => {
     return;
   }
 
+  if (new Date(start_date) >= new Date(end_date)) {
+    sendError(res);
+    return;
+  }
+
   const condition = {
     start_date: {
       $gte: start_date,
@@ -71,6 +76,11 @@ router.put('/:id', async (req, res) => {
   }
 
   if (!start_date || !end_date || !title) {
+    sendError(res);
+    return;
+  }
+
+  if (new Date(start_date) >= new Date(end_date)) {
     sendError(res);
     return;
   }
