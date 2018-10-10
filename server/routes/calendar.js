@@ -1,4 +1,5 @@
 const express = require('express');
+const _ = require('lodash');
 const errors = require('../errors');
 const { Calendar } = require('../models');
 const { sendError } = require('../utils/routeUtils');
@@ -53,6 +54,51 @@ router.get('/', async (req, res) => {
 
   const result = await Calendar.find(condition, '_id title start_date end_date').lean().exec();
   res.json(result);
+});
+
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { start_date, end_date, title } = req.body;
+  try {
+    const targetCalendar = await Calendar.findById(id).exec();
+    if (!targetCalendar) {
+      sendError(res);
+      return;
+    }
+  } catch (error) {
+    sendError(res);
+    return;
+  }
+
+  if (!start_date || !end_date || !title) {
+    sendError(res);
+    return;
+  }
+
+  const condition = {
+    _id: {
+      $ne: id,
+    },
+    start_date: {
+      $gte: start_date,
+      $lt: end_date,
+    },
+  };
+
+  const calendars = await Calendar.find(condition).lean().exec();
+  if (calendars.length) {
+    sendError(res, errors.calendar_duplicate_data);
+    return;
+  }
+
+  const putData = _.pick({
+    start_date,
+    end_date,
+    title,
+  }, _.identity);
+
+  await Calendar.findByIdAndUpdate({ _id: id }, putData, { useFindAndModify: false }).exec();
+  return res.json({});
 });
 
 module.exports = router;
