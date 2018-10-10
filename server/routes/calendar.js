@@ -34,8 +34,25 @@ router.post('/', async (req, res) => {
   return res.json({});
 });
 
-router.get('/', (req, res) => {
-  res.send('Hello World');
+router.get('/', async (req, res) => {
+  const { start_date, end_date } = req.query;
+
+  if (!start_date || !end_date) {
+    sendError(res);
+    return;
+  }
+
+  const condition = {
+    start_date: {
+      $gte: start_date,
+    },
+    end_date: {
+      $lt: end_date,
+    },
+  };
+
+  const result = await Calendar.find(condition, '_id title start_date end_date').lean().exec();
+  res.json(result);
 });
 
 module.exports = router;
