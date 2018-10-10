@@ -10,11 +10,10 @@
     "react-scripts": "2.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "precommit": "CI=true react-scripts test --env=jsdom"
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env NODE_PATH=src react-scripts build",
+    "test": "cross-env NODE_PATH=src react-scripts test",
+    "precommit": "cross-env NODE_PATH=src CI=true react-scripts test --env=jsdom"
   },
   "husky": {
     "hooks": {
@@ -23,7 +22,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-
   },
   "browserslist": [
     ">0.2%",
@@ -32,9 +30,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "husky": "^1.1.1",
+    "cross-env": "^5.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "husky": "^1.1.1",
     "react-test-renderer": "^16.5.2"
   }
 }
