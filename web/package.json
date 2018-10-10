@@ -23,6 +23,7 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+
   },
   "browserslist": [
     ">0.2%",
@@ -31,6 +32,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "husky": "^1.1.1"
+    "husky": "^1.1.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "react-test-renderer": "^16.5.2"
   }
 }
