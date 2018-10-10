@@ -148,4 +148,19 @@ describe('Calendar Router', () => {
       res.body.should.be.empty;
     });
   });
+
+  describe('DELETE /api/calendar/:id', () => {
+    it('should return error when invalid ObjectId is provided', async () => {
+      const fakeId = 'fakedId';
+      const res = await chai.request(app).delete(`/api/calendar/${fakeId}`);
+      res.status.should.be.equal(500);
+      assertError(res.error.text, route_invalid_data);
+    });
+
+    it('should delete the calendar events successfully', async () => {
+      const res = await chai.request(app).delete(`/api/calendar/${calendarId}`);
+      res.status.should.be.equal(200);
+      res.body.should.empty;
+    });
+  });
 });

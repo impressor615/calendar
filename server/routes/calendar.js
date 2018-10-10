@@ -111,4 +111,22 @@ router.put('/:id', async (req, res) => {
   return res.json({});
 });
 
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const targetCalendar = await Calendar.findById(id).exec();
+    if (!targetCalendar) {
+      sendError(res);
+      return;
+    }
+  } catch (err) {
+    sendError(res);
+    return;
+  }
+
+  await Calendar.findByIdAndRemove(id, { useFindAndModify: false }).exec();
+  return res.json({});
+});
+
 module.exports = router;
