@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import CalController from 'components/CalController';
+import Calendar from 'components/Calendar';
+import { monthRanges, weekRanges } from 'utils/dateUtils';
 
 import CONSTANTS from './constants';
 
@@ -12,9 +14,11 @@ class App extends Component {
     super(props);
     this.onArrowClick = this.onArrowClick.bind(this);
     this.onTypeClick = this.onTypeClick.bind(this);
+    const defaultDate = moment().startOf('month');
     this.state = {
-      date: moment().startOf('month'),
+      date: defaultDate,
       type: 'month',
+      range: monthRanges(defaultDate),
     };
   }
 
@@ -24,12 +28,18 @@ class App extends Component {
     const { type, date } = this.state;
     const newDate = (
       (name === 'next')
-        ? date.add(1, MOMENTS[type])
-        : date.subtract(1, MOMENTS[type])
+        ? moment(date).add(1, MOMENTS[type])
+        : moment(date).subtract(1, MOMENTS[type])
+    );
+    const range = (
+      type === 'month'
+        ? monthRanges(newDate)
+        : weekRanges(newDate)
     );
 
     this.setState({
       date: newDate,
+      range,
     });
   }
 
@@ -43,17 +53,24 @@ class App extends Component {
 
     const newDate = (
       (name === 'month')
-        ? date.startOf('month')
-        : date.startOf('week')
+        ? moment(date).startOf('month')
+        : moment(date).startOf('week')
     );
+    const range = (
+      (name === 'month')
+        ? monthRanges(newDate)
+        : weekRanges(newDate)
+    );
+
     this.setState({
       type: name,
       date: newDate,
+      range,
     });
   }
 
   render() {
-    const { type, date } = this.state;
+    const { type, date, range } = this.state;
     const title = date.format('YYYY년 MM월');
     return (
       <section className="container">
@@ -62,6 +79,10 @@ class App extends Component {
           title={title}
           onArrowClick={this.onArrowClick}
           onTypeClick={this.onTypeClick}
+        />
+        <Calendar
+          type={type}
+          range={range}
         />
       </section>
     );

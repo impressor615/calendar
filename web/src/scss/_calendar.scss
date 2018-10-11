@@ -1,0 +1,55 @@
+.calendar .month-calendar,
+.calendar .week-calendar {
+  display: grid;
+
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.calendar .month-calendar {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar .week-calendar {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.calendar .cal-block {
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+}
+
+.calendar .cal-block {
+  position: relative;
+  height: 120px;
+  padding: 10px;
+  border: 0;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+
+  box-sizing: content-box;
+}
+
+.calendar .cal-block.sm {
+  height: 80px;
+}
+
+.calendar button.cal-block {
+  overflow-y: auto;
+}
+
+.calendar .hour {
+  position: absolute;
+  background: white;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 0 5px;
+}
+
+.calendar .day {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
