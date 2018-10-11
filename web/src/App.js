@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
+import CalController from 'components/CalController';
+
+
 class App extends Component {
   render() {
     return (
-      <div>Hello World</div>
+      <section className="container">
+        <CalController />
+      </section>
     );
   }
 }

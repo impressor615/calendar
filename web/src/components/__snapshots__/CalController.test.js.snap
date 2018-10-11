@@ -1,0 +1,569 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CalController /> should be matched with the snapshot 1`] = `
+ReactWrapper {
+  Symbol(enzyme.__unrendered__): <CalController />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {},
+    "ref": null,
+    "rendered": Object {
+      "instance": <article
+        class="controller"
+      >
+        <section
+          class="date-control"
+        >
+          <button
+            class="btn arrow left"
+            type="button"
+          />
+          <div
+            class="title"
+          >
+            2018년 10월
+          </div>
+          <button
+            class="btn arrow right"
+            type="button"
+          />
+        </section>
+        <section
+          class="type-control"
+        >
+          <button
+            class="btn secondary"
+            type="button"
+          >
+            월
+          </button>
+          <button
+            class="btn secondary"
+            type="button"
+          >
+            주
+          </button>
+        </section>
+      </article>,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <section
+            className="date-control"
+          >
+            <button
+              className="btn arrow left"
+              type="button"
+            />
+            <div
+              className="title"
+            >
+              2018년 10월
+            </div>
+            <button
+              className="btn arrow right"
+              type="button"
+            />
+          </section>,
+          <section
+            className="type-control"
+          >
+            <button
+              className="btn secondary"
+              type="button"
+            >
+              월
+            </button>
+            <button
+              className="btn secondary"
+              type="button"
+            >
+              주
+            </button>
+          </section>,
+        ],
+        "className": "controller",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": <section
+            class="date-control"
+          >
+            <button
+              class="btn arrow left"
+              type="button"
+            />
+            <div
+              class="title"
+            >
+              2018년 10월
+            </div>
+            <button
+              class="btn arrow right"
+              type="button"
+            />
+          </section>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="btn arrow left"
+                type="button"
+              />,
+              <div
+                className="title"
+              >
+                2018년 10월
+              </div>,
+              <button
+                className="btn arrow right"
+                type="button"
+              />,
+            ],
+            "className": "date-control",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": <button
+                class="btn arrow left"
+                type="button"
+              />,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "btn arrow left",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Array [
+                undefined,
+              ],
+              "type": "button",
+            },
+            Object {
+              "instance": <div
+                class="title"
+              >
+                2018년 10월
+              </div>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "2018년 10월",
+                "className": "title",
+              },
+              "ref": null,
+              "rendered": Array [
+                "2018년 10월",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": <button
+                class="btn arrow right"
+                type="button"
+              />,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "btn arrow right",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Array [
+                undefined,
+              ],
+              "type": "button",
+            },
+          ],
+          "type": "section",
+        },
+        Object {
+          "instance": <section
+            class="type-control"
+          >
+            <button
+              class="btn secondary"
+              type="button"
+            >
+              월
+            </button>
+            <button
+              class="btn secondary"
+              type="button"
+            >
+              주
+            </button>
+          </section>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="btn secondary"
+                type="button"
+              >
+                월
+              </button>,
+              <button
+                className="btn secondary"
+                type="button"
+              >
+                주
+              </button>,
+            ],
+            "className": "type-control",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": <button
+                class="btn secondary"
+                type="button"
+              >
+                월
+              </button>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "월",
+                "className": "btn secondary",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Array [
+                "월",
+              ],
+              "type": "button",
+            },
+            Object {
+              "instance": <button
+                class="btn secondary"
+                type="button"
+              >
+                주
+              </button>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "주",
+                "className": "btn secondary",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Array [
+                "주",
+              ],
+              "type": "button",
+            },
+          ],
+          "type": "section",
+        },
+      ],
+      "type": "article",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {},
+      "ref": null,
+      "rendered": Object {
+        "instance": <article
+          class="controller"
+        >
+          <section
+            class="date-control"
+          >
+            <button
+              class="btn arrow left"
+              type="button"
+            />
+            <div
+              class="title"
+            >
+              2018년 10월
+            </div>
+            <button
+              class="btn arrow right"
+              type="button"
+            />
+          </section>
+          <section
+            class="type-control"
+          >
+            <button
+              class="btn secondary"
+              type="button"
+            >
+              월
+            </button>
+            <button
+              class="btn secondary"
+              type="button"
+            >
+              주
+            </button>
+          </section>
+        </article>,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <section
+              className="date-control"
+            >
+              <button
+                className="btn arrow left"
+                type="button"
+              />
+              <div
+                className="title"
+              >
+                2018년 10월
+              </div>
+              <button
+                className="btn arrow right"
+                type="button"
+              />
+            </section>,
+            <section
+              className="type-control"
+            >
+              <button
+                className="btn secondary"
+                type="button"
+              >
+                월
+              </button>
+              <button
+                className="btn secondary"
+                type="button"
+              >
+                주
+              </button>
+            </section>,
+          ],
+          "className": "controller",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": <section
+              class="date-control"
+            >
+              <button
+                class="btn arrow left"
+                type="button"
+              />
+              <div
+                class="title"
+              >
+                2018년 10월
+              </div>
+              <button
+                class="btn arrow right"
+                type="button"
+              />
+            </section>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <button
+                  className="btn arrow left"
+                  type="button"
+                />,
+                <div
+                  className="title"
+                >
+                  2018년 10월
+                </div>,
+                <button
+                  className="btn arrow right"
+                  type="button"
+                />,
+              ],
+              "className": "date-control",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <button
+                  class="btn arrow left"
+                  type="button"
+                />,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "btn arrow left",
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                ],
+                "type": "button",
+              },
+              Object {
+                "instance": <div
+                  class="title"
+                >
+                  2018년 10월
+                </div>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "2018년 10월",
+                  "className": "title",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "2018년 10월",
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": <button
+                  class="btn arrow right"
+                  type="button"
+                />,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "btn arrow right",
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                ],
+                "type": "button",
+              },
+            ],
+            "type": "section",
+          },
+          Object {
+            "instance": <section
+              class="type-control"
+            >
+              <button
+                class="btn secondary"
+                type="button"
+              >
+                월
+              </button>
+              <button
+                class="btn secondary"
+                type="button"
+              >
+                주
+              </button>
+            </section>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <button
+                  className="btn secondary"
+                  type="button"
+                >
+                  월
+                </button>,
+                <button
+                  className="btn secondary"
+                  type="button"
+                >
+                  주
+                </button>,
+              ],
+              "className": "type-control",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <button
+                  class="btn secondary"
+                  type="button"
+                >
+                  월
+                </button>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "월",
+                  "className": "btn secondary",
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "월",
+                ],
+                "type": "button",
+              },
+              Object {
+                "instance": <button
+                  class="btn secondary"
+                  type="button"
+                >
+                  주
+                </button>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "주",
+                  "className": "btn secondary",
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "주",
+                ],
+                "type": "button",
+              },
+            ],
+            "type": "section",
+          },
+        ],
+        "type": "article",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

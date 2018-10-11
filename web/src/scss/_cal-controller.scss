@@ -1,0 +1,36 @@
+.controller {
+  display: flex;
+  align-items: center;
+
+  border: 2px solid black;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.controller .date-control {
+  flex-basis: 80%;
+  max-width: 80%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.controller .date-control .title {
+  display: inline-block;
+
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.controller .type-control {
+  flex-basis: 20%;
+  max-width: 20%;
+
+  text-align: center;
+}
+
+.controller .type-control button:first-child {
+  border-right: 0px;
+}
