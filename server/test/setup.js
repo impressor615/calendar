@@ -13,6 +13,6 @@ chai.errors = errors;
 chai.models = models;
 chai.assertError = (error, compareObj) => {
   const errorObj = JSON.parse(error);
-  errorObj.message.should.to.equal(compareObj.message);
+  errorObj.message.should.to.equal(compareObj.en);
   errorObj.type.should.to.equal('error');
 };

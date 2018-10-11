@@ -1,11 +1,16 @@
 const errors = require('../errors');
 
 module.exports = {
-  sendError: (res, error = errors.route_invalid_data, status = 500) => (
-    res.status(status).json({
+  sendError: ({
+    res,
+    language,
+    error = errors.route_invalid_data,
+    status = 400,
+  }) => {
+    const message = error[language] || error.en;
+    return res.status(status).json({
       type: 'error',
-      message: error.message,
-      error,
-    })
-  ),
+      message,
+    });
+  },
 };

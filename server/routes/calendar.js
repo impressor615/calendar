@@ -8,13 +8,14 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   const { title, start_date, end_date } = req.body;
+  const { language } = req;
   if (!title || !start_date || !end_date) {
-    sendError(res);
+    sendError({ res, language });
     return;
   }
 
   if (new Date(start_date) >= new Date(end_date)) {
-    sendError(res);
+    sendError({ res, language });
     return;
   }
 
@@ -26,7 +27,12 @@ router.post('/', async (req, res) => {
   };
   const calendar = await Calendar.findOne(condition).lean().exec();
   if (calendar) {
-    sendError(res, errors.calendar_duplicate_data);
+    const errObj = {
+      res,
+      language: req.langauge,
+      error: errors.duplicate_event_exsists,
+    };
+    sendError(errObj);
     return;
   }
 
@@ -44,7 +50,7 @@ router.get('/', async (req, res) => {
   const { start_date, end_date } = req.query;
 
   if (!start_date || !end_date) {
-    sendError(res);
+    sendError({ res, langauge: req.language });
     return;
   }
 
@@ -64,24 +70,25 @@ router.get('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { start_date, end_date, title } = req.body;
+  const { language } = req;
   try {
     const targetCalendar = await Calendar.findById(id).exec();
     if (!targetCalendar) {
-      sendError(res);
+      sendError({ res, language });
       return;
     }
   } catch (error) {
-    sendError(res);
+    sendError({ res, language });
     return;
   }
 
   if (!start_date || !end_date || !title) {
-    sendError(res);
+    sendError({ res, language });
     return;
   }
 
   if (new Date(start_date) >= new Date(end_date)) {
-    sendError(res);
+    sendError({ res, language });
     return;
   }
 
@@ -97,7 +104,12 @@ router.put('/:id', async (req, res) => {
 
   const calendars = await Calendar.find(condition).lean().exec();
   if (calendars.length) {
-    sendError(res, errors.calendar_duplicate_data);
+    const errObj = {
+      res,
+      language,
+      error: errors.duplicate_event_exsists,
+    };
+    sendError(errObj);
     return;
   }
 
@@ -113,15 +125,16 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
+  const { language } = req;
 
   try {
     const targetCalendar = await Calendar.findById(id).exec();
     if (!targetCalendar) {
-      sendError(res);
+      sendError({ res, language });
       return;
     }
   } catch (err) {
-    sendError(res);
+    sendError({ res, language });
     return;
   }
 

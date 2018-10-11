@@ -8,7 +8,7 @@ const {
   errors,
   models,
 } = chai;
-const { route_invalid_data, calendar_duplicate_data } = errors;
+const { route_invalid_data, duplicate_event_exsists } = errors;
 const { Calendar } = models;
 const should = chai.should();
 
@@ -44,7 +44,7 @@ describe('Calendar Router', () => {
 
     it('should return error when data is not enough', async () => {
       const res = await chai.request(app).post('/api/calendar');
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
@@ -55,7 +55,7 @@ describe('Calendar Router', () => {
         end_date: moment().toISOString(),
       };
       const res = await chai.request(app).post('/api/calendar').send(invalidPostData);
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
@@ -71,8 +71,8 @@ describe('Calendar Router', () => {
       const res = await chai.request(app)
         .post('/api/calendar')
         .send(postData);
-      res.status.should.be.equal(500);
-      assertError(res.error.text, calendar_duplicate_data);
+      res.status.should.be.equal(400);
+      assertError(res.error.text, duplicate_event_exsists);
     });
   });
 
@@ -86,7 +86,7 @@ describe('Calendar Router', () => {
 
     it('should return error when required query strings is not provided', async () => {
       const res = await chai.request(app).get('/api/calendar');
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
@@ -103,13 +103,13 @@ describe('Calendar Router', () => {
     it('should return error if invalid ObjectId is provided', async () => {
       const fakeId = 'fakeId';
       const res = await chai.request(app).put(`/api/calendar/${fakeId}`);
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
     it('should return error if nothing exsist in request body', async () => {
       const res = await chai.request(app).put(`/api/calendar/${calendarId}`);
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
@@ -120,7 +120,7 @@ describe('Calendar Router', () => {
         end_date: moment().toISOString(),
       };
       const res = await chai.request(app).put(`/api/calendar/${calendarId}`).send(invalidPutData);
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
@@ -131,8 +131,8 @@ describe('Calendar Router', () => {
         end_date: currentEndDate,
       };
       const res = await chai.request(app).put(`/api/calendar/${calendarId}`).send(putData);
-      res.status.should.be.equal(500);
-      assertError(res.error.text, calendar_duplicate_data);
+      res.status.should.be.equal(400);
+      assertError(res.error.text, duplicate_event_exsists);
     });
 
     it('should update the calendar event if valid data is provided', async () => {
@@ -153,7 +153,7 @@ describe('Calendar Router', () => {
     it('should return error when invalid ObjectId is provided', async () => {
       const fakeId = 'fakedId';
       const res = await chai.request(app).delete(`/api/calendar/${fakeId}`);
-      res.status.should.be.equal(500);
+      res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
