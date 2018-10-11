@@ -9,9 +9,4 @@ describe('<App />', () => {
     ReactDOM.render(<App />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-
-  it('should be matched with snapshot', () => {
-    const wrapper = mount(<App />);
-    expect(wrapper).toMatchSnapshot();
-  })
 });
