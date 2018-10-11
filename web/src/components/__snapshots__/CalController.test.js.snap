@@ -34,95 +34,99 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
   <article
     className="controller"
   >
-    <section
-      className="date-control"
+    <div
+      className="controller-wrapper"
     >
-      <button
-        className="btn arrow left"
-        name="previous"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
-          }
-        }
-        type="button"
-      />
-      <div
-        className="title"
+      <section
+        className="date-control"
       >
-        title
-      </div>
-      <button
-        className="btn arrow right"
-        name="next"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
+        <button
+          className="btn arrow left"
+          name="previous"
+          onClick={
+            [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
           }
-        }
-        type="button"
-      />
-    </section>
-    <section
-      className="type-control"
-    >
-      <button
-        className="btn secondary"
-        name="month"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
+          type="button"
+        />
+        <div
+          className="title"
+        >
+          title
+        </div>
+        <button
+          className="btn arrow right"
+          name="next"
+          onClick={
+            [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
           }
-        }
-        type="button"
+          type="button"
+        />
+      </section>
+      <section
+        className="type-control"
       >
-        월
-      </button>
-      <button
-        className="btn secondary"
-        name="week"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
+        <button
+          className="btn secondary"
+          name="month"
+          onClick={
+            [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
           }
-        }
-        type="button"
-      >
-        주
-      </button>
-    </section>
+          type="button"
+        >
+          월
+        </button>
+        <button
+          className="btn secondary"
+          name="week"
+          onClick={
+            [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          type="button"
+        >
+          주
+        </button>
+      </section>
+    </div>
   </article>
 </CalController>
 `;

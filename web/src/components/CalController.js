@@ -10,39 +10,41 @@ const CalController = ({
   onTypeClick,
 }) => (
   <article className="controller">
-    <section className="date-control">
-      <button
-        name="previous"
-        type="button"
-        className="btn arrow left"
-        onClick={onArrowClick}
-      />
-      <div className="title">{title}</div>
-      <button
-        name="next"
-        type="button"
-        className="btn arrow right"
-        onClick={onArrowClick}
-      />
-    </section>
-    <section className="type-control">
-      <button
-        name="month"
-        type="button"
-        onClick={onTypeClick}
-        className={classnames('btn secondary', { active: type === 'month'})}
-      >
-        월
-      </button>
-      <button
-        name="week"
-        type="button"
-        onClick={onTypeClick}
-        className={classnames('btn secondary', { active: type === 'week'})}
-      >
-        주
-      </button>
-    </section>
+    <div className="controller-wrapper">
+      <section className="date-control">
+        <button
+          name="previous"
+          type="button"
+          className="btn arrow left"
+          onClick={onArrowClick}
+        />
+        <div className="title">{title}</div>
+        <button
+          name="next"
+          type="button"
+          className="btn arrow right"
+          onClick={onArrowClick}
+        />
+      </section>
+      <section className="type-control">
+        <button
+          name="month"
+          type="button"
+          onClick={onTypeClick}
+          className={classnames('btn secondary', { active: type === 'month'})}
+        >
+          월
+        </button>
+        <button
+          name="week"
+          type="button"
+          onClick={onTypeClick}
+          className={classnames('btn secondary', { active: type === 'week'})}
+        >
+          주
+        </button>
+      </section>
+    </div>
   </article>
 );
 

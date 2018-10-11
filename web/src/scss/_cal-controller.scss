@@ -1,14 +1,22 @@
 .controller {
+  position: fixed;
+  width: $screen-lg;
+  z-index: $header-zindex;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+
+  padding-top: 25px
+}
+
+.controller-wrapper {
   display: flex;
   align-items: center;
 
   border: 2px solid black;
   padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 35px;
 }
 
-.controller .date-control {
+.controller-wrapper .date-control {
   flex-basis: 80%;
   max-width: 80%;
 
@@ -17,20 +25,20 @@
   align-items: center;
 }
 
-.controller .date-control .title {
+.controller-wrapper .date-control .title {
   display: inline-block;
 
   font-size: 25px;
   font-weight: bold;
 }
 
-.controller .type-control {
+.controller-wrapper .type-control {
   flex-basis: 20%;
   max-width: 20%;
 
   text-align: center;
 }
 
-.controller .type-control button:first-child {
+.controller-wrapper .type-control button:first-child {
   border-right: 0px;
 }
