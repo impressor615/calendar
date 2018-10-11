@@ -10,7 +10,7 @@
     "react-scripts": "2.0.4"
   },
   "scripts": {
-    "start": "cross-env NODE_PATH=src react-scripts start",
+    "dev": "cross-env NODE_PATH=src react-scripts start",
     "build": "cross-env NODE_PATH=src react-scripts build",
     "test": "cross-env NODE_PATH=src react-scripts test",
     "precommit": "cross-env NODE_PATH=src CI=true react-scripts test --env=jsdom"
