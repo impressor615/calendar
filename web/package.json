@@ -15,11 +15,6 @@
     "test": "cross-env NODE_PATH=src react-scripts test",
     "precommit": "cross-env NODE_PATH=src CI=true react-scripts test --env=jsdom"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit"
-    }
-  },
   "eslintConfig": {
     "extends": "react-app",
     "env": {
@@ -41,7 +36,6 @@
     "cross-env": "^5.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
-    "husky": "^1.1.1",
     "react-test-renderer": "^16.5.2"
   }
 }

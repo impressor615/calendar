@@ -1,0 +1,18 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "scripts": {
+    "web-precommit": "cd web && npm run precommit",
+    "server-precommit": "cd server && npm run test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run web-precommit && npm run server-precommit"
+    }
+  },
+  "author": "seonghyeon",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^1.1.2"
+  }
+}
