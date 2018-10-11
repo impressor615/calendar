@@ -1,18 +1,56 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 
-const CalController = () => (
+const CalController = ({
+  type,
+  title,
+  onArrowClick,
+  onTypeClick,
+}) => (
   <article className="controller">
     <section className="date-control">
-      <button type="button" className="btn arrow left" />
-      <div className="title">2018년 10월</div>
-      <button type="button" className="btn arrow right" />
+      <button
+        name="previous"
+        type="button"
+        className="btn arrow left"
+        onClick={onArrowClick}
+      />
+      <div className="title">{title}</div>
+      <button
+        name="next"
+        type="button"
+        className="btn arrow right"
+        onClick={onArrowClick}
+      />
     </section>
     <section className="type-control">
-      <button type="button" className="btn secondary">월</button>
-      <button type="button" className="btn secondary">주</button>
+      <button
+        name="month"
+        type="button"
+        onClick={onTypeClick}
+        className={classnames('btn secondary', { active: type === 'month'})}
+      >
+        월
+      </button>
+      <button
+        name="week"
+        type="button"
+        onClick={onTypeClick}
+        className={classnames('btn secondary', { active: type === 'week'})}
+      >
+        주
+      </button>
     </section>
   </article>
 );
+
+CalController.propTypes = {
+  type: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
+  onArrowClick: PropTypes.func.isRequired,
+  onTypeClick: PropTypes.func.isRequired,
+}
 
 export default CalController;

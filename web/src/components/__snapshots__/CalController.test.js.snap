@@ -2,7 +2,36 @@
 
 exports[`<CalController /> should be matched with the snapshot 1`] = `
 ReactWrapper {
-  Symbol(enzyme.__unrendered__): <CalController />,
+  Symbol(enzyme.__unrendered__): <CalController
+    onArrowClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    onTypeClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    title="title"
+    type="months"
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -16,7 +45,32 @@ ReactWrapper {
     "instance": null,
     "key": undefined,
     "nodeType": "function",
-    "props": Object {},
+    "props": Object {
+      "onArrowClick": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "onTypeClick": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "title": "title",
+      "type": "months",
+    },
     "ref": null,
     "rendered": Object {
       "instance": <article
@@ -27,15 +81,17 @@ ReactWrapper {
         >
           <button
             class="btn arrow left"
+            name="previous"
             type="button"
           />
           <div
             class="title"
           >
-            2018년 10월
+            title
           </div>
           <button
             class="btn arrow right"
+            name="next"
             type="button"
           />
         </section>
@@ -44,12 +100,14 @@ ReactWrapper {
         >
           <button
             class="btn secondary"
+            name="month"
             type="button"
           >
             월
           </button>
           <button
             class="btn secondary"
+            name="week"
             type="button"
           >
             주
@@ -65,15 +123,43 @@ ReactWrapper {
           >
             <button
               className="btn arrow left"
+              name="previous"
+              onClick={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
               type="button"
             />
             <div
               className="title"
             >
-              2018년 10월
+              title
             </div>
             <button
               className="btn arrow right"
+              name="next"
+              onClick={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
               type="button"
             />
           </section>,
@@ -82,12 +168,40 @@ ReactWrapper {
           >
             <button
               className="btn secondary"
+              name="month"
+              onClick={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
               type="button"
             >
               월
             </button>
             <button
               className="btn secondary"
+              name="week"
+              onClick={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
               type="button"
             >
               주
@@ -104,15 +218,17 @@ ReactWrapper {
           >
             <button
               class="btn arrow left"
+              name="previous"
               type="button"
             />
             <div
               class="title"
             >
-              2018년 10월
+              title
             </div>
             <button
               class="btn arrow right"
+              name="next"
               type="button"
             />
           </section>,
@@ -122,15 +238,43 @@ ReactWrapper {
             "children": Array [
               <button
                 className="btn arrow left"
+                name="previous"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               />,
               <div
                 className="title"
               >
-                2018년 10월
+                title
               </div>,
               <button
                 className="btn arrow right"
+                name="next"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               />,
             ],
@@ -141,12 +285,25 @@ ReactWrapper {
             Object {
               "instance": <button
                 class="btn arrow left"
+                name="previous"
                 type="button"
               />,
               "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "className": "btn arrow left",
+                "name": "previous",
+                "onClick": [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
                 "type": "button",
               },
               "ref": null,
@@ -159,29 +316,42 @@ ReactWrapper {
               "instance": <div
                 class="title"
               >
-                2018년 10월
+                title
               </div>,
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "2018년 10월",
+                "children": "title",
                 "className": "title",
               },
               "ref": null,
               "rendered": Array [
-                "2018년 10월",
+                "title",
               ],
               "type": "div",
             },
             Object {
               "instance": <button
                 class="btn arrow right"
+                name="next"
                 type="button"
               />,
               "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "className": "btn arrow right",
+                "name": "next",
+                "onClick": [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
                 "type": "button",
               },
               "ref": null,
@@ -199,12 +369,14 @@ ReactWrapper {
           >
             <button
               class="btn secondary"
+              name="month"
               type="button"
             >
               월
             </button>
             <button
               class="btn secondary"
+              name="week"
               type="button"
             >
               주
@@ -216,12 +388,40 @@ ReactWrapper {
             "children": Array [
               <button
                 className="btn secondary"
+                name="month"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               >
                 월
               </button>,
               <button
                 className="btn secondary"
+                name="week"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               >
                 주
@@ -234,6 +434,7 @@ ReactWrapper {
             Object {
               "instance": <button
                 class="btn secondary"
+                name="month"
                 type="button"
               >
                 월
@@ -243,6 +444,18 @@ ReactWrapper {
               "props": Object {
                 "children": "월",
                 "className": "btn secondary",
+                "name": "month",
+                "onClick": [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
                 "type": "button",
               },
               "ref": null,
@@ -254,6 +467,7 @@ ReactWrapper {
             Object {
               "instance": <button
                 class="btn secondary"
+                name="week"
                 type="button"
               >
                 주
@@ -263,6 +477,18 @@ ReactWrapper {
               "props": Object {
                 "children": "주",
                 "className": "btn secondary",
+                "name": "week",
+                "onClick": [MockFunction] {
+                  "calls": Array [
+                    Array [],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
                 "type": "button",
               },
               "ref": null,
@@ -284,7 +510,32 @@ ReactWrapper {
       "instance": null,
       "key": undefined,
       "nodeType": "function",
-      "props": Object {},
+      "props": Object {
+        "onArrowClick": [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        },
+        "onTypeClick": [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        },
+        "title": "title",
+        "type": "months",
+      },
       "ref": null,
       "rendered": Object {
         "instance": <article
@@ -295,15 +546,17 @@ ReactWrapper {
           >
             <button
               class="btn arrow left"
+              name="previous"
               type="button"
             />
             <div
               class="title"
             >
-              2018년 10월
+              title
             </div>
             <button
               class="btn arrow right"
+              name="next"
               type="button"
             />
           </section>
@@ -312,12 +565,14 @@ ReactWrapper {
           >
             <button
               class="btn secondary"
+              name="month"
               type="button"
             >
               월
             </button>
             <button
               class="btn secondary"
+              name="week"
               type="button"
             >
               주
@@ -333,15 +588,43 @@ ReactWrapper {
             >
               <button
                 className="btn arrow left"
+                name="previous"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               />
               <div
                 className="title"
               >
-                2018년 10월
+                title
               </div>
               <button
                 className="btn arrow right"
+                name="next"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               />
             </section>,
@@ -350,12 +633,40 @@ ReactWrapper {
             >
               <button
                 className="btn secondary"
+                name="month"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               >
                 월
               </button>
               <button
                 className="btn secondary"
+                name="week"
+                onClick={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
                 type="button"
               >
                 주
@@ -372,15 +683,17 @@ ReactWrapper {
             >
               <button
                 class="btn arrow left"
+                name="previous"
                 type="button"
               />
               <div
                 class="title"
               >
-                2018년 10월
+                title
               </div>
               <button
                 class="btn arrow right"
+                name="next"
                 type="button"
               />
             </section>,
@@ -390,15 +703,43 @@ ReactWrapper {
               "children": Array [
                 <button
                   className="btn arrow left"
+                  name="previous"
+                  onClick={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
                   type="button"
                 />,
                 <div
                   className="title"
                 >
-                  2018년 10월
+                  title
                 </div>,
                 <button
                   className="btn arrow right"
+                  name="next"
+                  onClick={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
                   type="button"
                 />,
               ],
@@ -409,12 +750,25 @@ ReactWrapper {
               Object {
                 "instance": <button
                   class="btn arrow left"
+                  name="previous"
                   type="button"
                 />,
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "className": "btn arrow left",
+                  "name": "previous",
+                  "onClick": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  },
                   "type": "button",
                 },
                 "ref": null,
@@ -427,29 +781,42 @@ ReactWrapper {
                 "instance": <div
                   class="title"
                 >
-                  2018년 10월
+                  title
                 </div>,
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "2018년 10월",
+                  "children": "title",
                   "className": "title",
                 },
                 "ref": null,
                 "rendered": Array [
-                  "2018년 10월",
+                  "title",
                 ],
                 "type": "div",
               },
               Object {
                 "instance": <button
                   class="btn arrow right"
+                  name="next"
                   type="button"
                 />,
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "className": "btn arrow right",
+                  "name": "next",
+                  "onClick": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  },
                   "type": "button",
                 },
                 "ref": null,
@@ -467,12 +834,14 @@ ReactWrapper {
             >
               <button
                 class="btn secondary"
+                name="month"
                 type="button"
               >
                 월
               </button>
               <button
                 class="btn secondary"
+                name="week"
                 type="button"
               >
                 주
@@ -484,12 +853,40 @@ ReactWrapper {
               "children": Array [
                 <button
                   className="btn secondary"
+                  name="month"
+                  onClick={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
                   type="button"
                 >
                   월
                 </button>,
                 <button
                   className="btn secondary"
+                  name="week"
+                  onClick={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
                   type="button"
                 >
                   주
@@ -502,6 +899,7 @@ ReactWrapper {
               Object {
                 "instance": <button
                   class="btn secondary"
+                  name="month"
                   type="button"
                 >
                   월
@@ -511,6 +909,18 @@ ReactWrapper {
                 "props": Object {
                   "children": "월",
                   "className": "btn secondary",
+                  "name": "month",
+                  "onClick": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  },
                   "type": "button",
                 },
                 "ref": null,
@@ -522,6 +932,7 @@ ReactWrapper {
               Object {
                 "instance": <button
                   class="btn secondary"
+                  name="week"
                   type="button"
                 >
                   주
@@ -531,6 +942,18 @@ ReactWrapper {
                 "props": Object {
                   "children": "주",
                   "className": "btn secondary",
+                  "name": "week",
+                  "onClick": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  },
                   "type": "button",
                 },
                 "ref": null,
