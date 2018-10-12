@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> shoud be matched with the snapshot 1`] = `
+<Modal
+  isOpen={true}
+>
+  <Portal
+    containerInfo={
+      <div
+        id="modal-root"
+      >
+        <div
+          class="modal"
+        >
+          <div
+            class="modal-dialog"
+          >
+            <div
+              class="modal-header"
+            >
+              <div>
+                일정 추가 및 수정
+              </div>
+              <button
+                class="btn"
+                type="button"
+              >
+                ×
+              </button>
+            </div>
+            <div
+              class="modal-body"
+            >
+              ModalBody
+            </div>
+            <div
+              class="modal-footer"
+            >
+              <button>
+                취소
+              </button>
+              <button>
+                저장
+              </button>
+            </div>
+          </div>
+          <div
+            class="modal-backdrop"
+          />
+        </div>
+      </div>
+    }
+  >
+    <div
+      className="modal"
+    >
+      <div
+        className="modal-dialog"
+      >
+        <ModalHeader
+          onToggle={[MockFunction]}
+        >
+          <div
+            className="modal-header"
+          >
+            <div>
+              일정 추가 및 수정
+            </div>
+            <button
+              className="btn"
+              onClick={[MockFunction]}
+              type="button"
+            >
+              ×
+            </button>
+          </div>
+        </ModalHeader>
+        <ModalBody>
+          <div
+            className="modal-body"
+          >
+            ModalBody
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <div
+            className="modal-footer"
+          >
+            <button>
+              취소
+            </button>
+            <button>
+              저장
+            </button>
+          </div>
+        </ModalFooter>
+      </div>
+      <div
+        className="modal-backdrop"
+      />
+    </div>
+  </Portal>
+</Modal>
+`;

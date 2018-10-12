@@ -3,6 +3,10 @@ $screen-lg: 992px;
 
 // color
 $secondary-color: black;
+$gray: #e9ecef;
 
 // z-index
 $header-zindex: 10;
+$modal-backdrop-zindex: 1040;
+$modal-zindex: 1050;
+$modal-dialog-zindex: 1060;
