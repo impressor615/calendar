@@ -31,7 +31,7 @@ const CalController = ({
           name="month"
           type="button"
           onClick={onTypeClick}
-          className={classnames('btn secondary', { active: type === 'month'})}
+          className={classnames('btn primary', { active: type === 'month'})}
         >
           월
         </button>
@@ -39,7 +39,7 @@ const CalController = ({
           name="week"
           type="button"
           onClick={onTypeClick}
-          className={classnames('btn secondary', { active: type === 'week'})}
+          className={classnames('btn primary', { active: type === 'week'})}
         >
           주
         </button>

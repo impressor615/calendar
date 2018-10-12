@@ -24,7 +24,7 @@ describe('<CalController />', () => {
   it('onClick event should be fired when button is clicked', () => {
     const wrapper = shallow(<CalController {...props} />);
     wrapper.find('.btn.arrow').first().simulate('click');
-    wrapper.find('.btn.secondary').first().simulate('click');
+    wrapper.find('.btn.primary').first().simulate('click');
 
     expect(onArrowClick).toHaveBeenCalledTimes(1);
     expect(onTypeClick).toHaveBeenCalledTimes(1);

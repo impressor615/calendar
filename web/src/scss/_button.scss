@@ -19,15 +19,15 @@
   border-left-color: $secondary-color;
 }
 
+.btn.primary,
 .btn.secondary {
-  border: 1px solid $secondary-color;
   padding: 5px 15px;
 }
 
+.btn.primary:hover,
+.btn.primary.active,
 .btn.secondary:hover,
 .btn.secondary.active {
-<<<<<<< HEAD
-=======
   opacity: .8;
 }
 
@@ -44,8 +44,13 @@
 
 .btn.primary:hover,
 .btn.primary.active {
->>>>>>> 832c667... web - (merge) add primary button
   color: white;
   background: $secondary-color;
-  opacity: .8;
 }
+
+.btn.secondary:hover,
+.btn.secondary.active {
+  color:black;
+  background: $primary-color;
+}
+

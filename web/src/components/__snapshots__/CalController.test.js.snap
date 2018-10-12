@@ -86,7 +86,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
         className="type-control"
       >
         <button
-          className="btn secondary"
+          className="btn primary"
           name="month"
           onClick={
             [MockFunction] {
@@ -106,7 +106,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
           월
         </button>
         <button
-          className="btn secondary"
+          className="btn primary"
           name="week"
           onClick={
             [MockFunction] {
