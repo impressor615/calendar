@@ -45,3 +45,15 @@ export const getHourKey = (hour) => {
   }
   return hourKey;
 };
+
+export const getCalendarTitle = (date, type='month') => {
+  let result = moment(date).format('YYYY년 MM월');
+  if (type === 'month') {
+    return result;
+  }
+
+  if (type === 'week') {
+    const weekNum = moment(date).week() - moment(date).startOf('month').week();
+    return `${result} ${weekNum}번째 주`;
+  }
+}

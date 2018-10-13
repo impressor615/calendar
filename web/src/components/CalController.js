@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import { getCalendarTitle } from 'utils/dateUtils';
+
 
 const CalController = ({
   type,
@@ -18,7 +20,7 @@ const CalController = ({
           className="btn arrow left"
           onClick={onArrowClick}
         />
-        <div className="title">{currentDate.format('YYYY년 MM월')}</div>
+        <div className="title">{getCalendarTitle(currentDate, type)}</div>
         <button
           name="next"
           type="button"

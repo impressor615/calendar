@@ -60,9 +60,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
         />
         <div
           className="title"
-        >
-          2018년 10월
-        </div>
+        />
         <button
           className="btn arrow right"
           name="next"
