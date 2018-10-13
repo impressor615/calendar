@@ -52,8 +52,8 @@ class App extends Component {
         end_date: moment(defaultDate).add(1, 'hours'),
       },
       message: {
-        isOpen: true,
-        message: 'message',
+        isOpen: false,
+        message: '',
         type: 'danger',
       },
     };

@@ -24,72 +24,76 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
     >
       일정 추가 및 변경
     </ModalHeader>
-    <ModalBody>
-      <input
-        id="title"
-        onChange={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
-          }
+    <form
+      onSubmit={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
         }
-        placeholder="일정 제목을 입력해주세요!"
-        type="text"
-        value="title"
-      />
-      <DateRange
-        endDate={"2018-10-12T16:00:00.000Z"}
-        onChange={[MockFunction]}
-        startDate={"2018-10-12T15:00:00.000Z"}
-      />
-    </ModalBody>
-    <ModalFooter>
-      <button
-        className="close-btn btn primary"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
+      }
+    >
+      <ModalBody>
+        <input
+          id="title"
+          onChange={
+            [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
           }
-        }
-      >
-        취소
-      </button>
-      <button
-        className="submit-btn btn secondary"
-        disabled={false}
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
+          placeholder="일정 제목을 입력해주세요!"
+          required={true}
+          type="text"
+          value="title"
+        />
+        <DateRange
+          endDate={"2018-10-12T16:00:00.000Z"}
+          onChange={[MockFunction]}
+          startDate={"2018-10-12T15:00:00.000Z"}
+        />
+      </ModalBody>
+      <ModalFooter>
+        <button
+          className="close-btn btn primary"
+          onClick={
+            [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
           }
-        }
-        type="submit"
-      >
-        저장
-      </button>
-    </ModalFooter>
+        >
+          취소
+        </button>
+        <button
+          className="submit-btn btn secondary"
+          disabled={false}
+          type="submit"
+        >
+          저장
+        </button>
+      </ModalFooter>
+    </form>
   </ModalDialog>
 </Modal>
 `;

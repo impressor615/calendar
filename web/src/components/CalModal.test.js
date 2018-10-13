@@ -43,7 +43,7 @@ describe('<CalModal />', () => {
     const wrapper = shallow(<CalModal {...props} />);
     wrapper.find('input#title').simulate('change');
     wrapper.find('button.close-btn').simulate('click');
-    wrapper.find('button.submit-btn').simulate('click');
+    wrapper.find('form').simulate('submit');
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onToggle).toHaveBeenCalledTimes(1);
     expect(onSubmit).toHaveBeenCalledTimes(1);
@@ -56,7 +56,7 @@ describe('<CalModal />', () => {
     });
 
     wrapper.find('button.delete-btn').simulate('click');
-    wrapper.find('button.submit-btn').simulate('click');
+    wrapper.find('form').simulate('submit');
     expect(onDelete).toHaveBeenCalledTimes(1);
     expect(onUpdate).toHaveBeenCalledTimes(1);
   });
