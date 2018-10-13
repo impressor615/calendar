@@ -13,6 +13,8 @@ import { weekRange, monthRange } from 'utils/dateUtils';
 
 describe('<Calendar />', () => {
   const onToggle = jest.fn();
+  const onDragStart = jest.fn();
+  const onDrop = jest.fn();
   const currentDate = moment('2018-10-13');
   const mRange = monthRange(currentDate);
   const wRange = weekRange(currentDate);
@@ -22,6 +24,8 @@ describe('<Calendar />', () => {
     currentDate,
     range: mRange.items,
     onToggle,
+    onDragStart,
+    onDrop,
     data: [
       {
         title: 'title',

@@ -12,6 +12,8 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
       },
     ]
   }
+  onDragStart={[MockFunction]}
+  onDrop={[MockFunction]}
   onToggle={[MockFunction]}
   range={
     Array [
@@ -243,6 +245,8 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           },
         ]
       }
+      onDragStart={[MockFunction]}
+      onDrop={[MockFunction]}
       onToggle={[MockFunction]}
       range={
         Array [
@@ -474,11 +478,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="일"
           key="0"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -502,11 +509,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="월"
           key="1"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -530,11 +540,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="화"
           key="2"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -558,11 +571,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="수"
           key="3"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -586,11 +602,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="목"
           key="4"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -614,11 +633,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="금"
           key="5"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -642,11 +664,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
           }
           day="토"
           key="6"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div
               className="day"
@@ -668,12 +693,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="7"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               7
@@ -690,12 +719,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="8"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               8
@@ -712,12 +745,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="9"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               9
@@ -734,12 +771,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="10"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               10
@@ -756,12 +797,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="11"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               11
@@ -778,12 +823,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="12"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               12
@@ -800,12 +849,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="13"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               13
@@ -814,11 +867,14 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               className="primary"
               fluid={false}
               key="0"
+              onDragStart={[Function]}
               onToggle={[Function]}
             >
               <button
                 className="event-block btn primary"
+                draggable={true}
                 onClick={[Function]}
+                onDragStart={[Function]}
                 type="button"
               >
                 ○ 
@@ -837,12 +893,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="14"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               14
@@ -859,12 +919,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="15"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               15
@@ -881,12 +945,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="16"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               16
@@ -903,12 +971,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="17"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               17
@@ -925,12 +997,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="18"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               18
@@ -947,12 +1023,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="19"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               19
@@ -969,12 +1049,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="20"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               20
@@ -991,12 +1075,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="21"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               21
@@ -1013,12 +1101,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="22"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               22
@@ -1035,12 +1127,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="23"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               23
@@ -1057,12 +1153,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="24"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               24
@@ -1079,12 +1179,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="25"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               25
@@ -1101,12 +1205,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="26"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               26
@@ -1123,12 +1231,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="27"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               27
@@ -1145,12 +1257,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="28"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               28
@@ -1167,12 +1283,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="29"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               29
@@ -1189,12 +1309,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="30"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               30
@@ -1211,12 +1335,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="31"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               31
@@ -1233,12 +1361,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="32"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               11월 1일
@@ -1255,12 +1387,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="33"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               11월 2일
@@ -1277,12 +1413,16 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               "year": 2018,
             }
           }
+          day=""
           key="34"
+          onDrop={[MockFunction]}
           onToggle={[MockFunction]}
         >
           <div
             className="cal-block"
             onClick={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
           >
             <div>
               11월 3일

@@ -8,16 +8,20 @@ import { eventBind } from 'utils/eventUtils';
 import CONSTANTS from '../constants';
 
 
+const { DAY, HOURS } = CONSTANTS;
 export const EventBlock = ({
   children,
   onToggle,
+  onDragStart,
   fluid,
   ...rest
 }) => (
   <button
+    draggable
     {...rest}
     type="button"
     onClick={onToggle}
+    onDragStart={onDragStart}
     className={classnames('event-block btn', rest.className, { fluid })}
   >
     {children}
@@ -31,16 +35,17 @@ EventBlock.defaultProps = {
 EventBlock.propTypes = {
   children: PropTypes.node.isRequired,
   onToggle: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
   fluid: PropTypes.bool,
 }
 
-const { DAY, HOURS } = CONSTANTS;
 export const CalendarDay = ({
   day,
   dateObj,
   children,
   currentDate,
   onToggle,
+  onDrop,
 }) => {
   const isYearShowing = currentDate.year() !== dateObj.year;
   const isMonthShowing = (currentDate.month() + 1) !== dateObj.month;
@@ -48,6 +53,8 @@ export const CalendarDay = ({
     <div
       className="cal-block"
       onClick={eventBind(onToggle, { type: 'month', dateObj })}
+      onDrop={eventBind(onDrop, { type: 'month', dateObj })}
+      onDragOver={eventBind((e) => e.preventDefault())}
     >
       { day ? <div className="day">{day}</div> : null}
       <div>
@@ -60,7 +67,28 @@ export const CalendarDay = ({
   );
 }
 
-export const MonthCalendar = ({ range, onToggle, currentDate, data }) => (
+CalendarDay.defaultProps = {
+  day: '',
+  children: '',
+}
+
+CalendarDay.propTypes = {
+  day: PropTypes.string,
+  children: PropTypes.node,
+  dateObj: PropTypes.object.isRequired,
+  currentDate: PropTypes.object.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
+}
+
+export const MonthCalendar = ({
+  range,
+  onToggle,
+  onDragStart,
+  onDrop,
+  currentDate,
+  data,
+}) => (
   <section className="month-calendar">
     {
       range.map((dateObj, index) => {
@@ -76,6 +104,7 @@ export const MonthCalendar = ({ range, onToggle, currentDate, data }) => (
             dateObj={dateObj}
             day={DAY[index]}
             onToggle={onToggle}
+            onDrop={onDrop}
           >
            {
               events.length
@@ -86,6 +115,7 @@ export const MonthCalendar = ({ range, onToggle, currentDate, data }) => (
                         <EventBlock
                           key={index.toString()}
                           className="primary"
+                          onDragStart={eventBind(onDragStart, { event })}
                           onToggle={eventBind(onToggle, { type: 'event', dateObj: event })}
                         >
                           &#9675; {`${getHourKey(moment(event.start_date).hours())}:00 ${event.title}`}
@@ -102,13 +132,50 @@ export const MonthCalendar = ({ range, onToggle, currentDate, data }) => (
   </section>
 );
 
-export const CalendarTime = ({ children, onToggle }) => (
-  <div className="cal-block sm" onClick={onToggle}>
+MonthCalendar.propTypes = {
+  range: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  currentDate: PropTypes.object.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export const CalendarTime = ({
+  children,
+  onToggle,
+  onDragOver,
+  onDrop,
+}) => (
+  <div
+    className="cal-block sm"
+    onClick={onToggle}
+    onDragOver={onDragOver}
+    onDrop={onDrop}
+  >
     {children}
   </div>
 );
 
-export const WeekCalendar = ({ range, onToggle, currentDate, data }) => (
+CalendarTime.defaultProps = {
+  children: '',
+};
+
+CalendarTime.propTypes = {
+  children: PropTypes.node,
+  onToggle: PropTypes.func.isRequired,
+  onDragOver: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
+};
+
+export const WeekCalendar = ({
+  range,
+  onToggle,
+  onDragStart,
+  onDrop,
+  currentDate,
+  data,
+}) => (
   <section className="week-calendar">
     <div className="cal-block sm" />
     {
@@ -146,6 +213,8 @@ export const WeekCalendar = ({ range, onToggle, currentDate, data }) => (
                 <CalendarTime
                   key={index.toString()}
                   onToggle={eventBind(onToggle, { type: 'week', hour: code, dateObj })}
+                  onDragOver={eventBind((e) => e.preventDefault())}
+                  onDrop={eventBind(onDrop, { type: 'week', hour: code, dateObj })}
                 >
                   {
                     event
@@ -155,6 +224,7 @@ export const WeekCalendar = ({ range, onToggle, currentDate, data }) => (
                           className="secondary"
                           key={index.toString()}
                           onToggle={eventBind(onToggle, { type: 'event', dateObj: event })}
+                          onDragStart={eventBind(onDragStart, { event })}
                         >
                           <div>{event.title}</div>
                           <div>{ text || '오전 00시' }</div>
@@ -171,18 +241,47 @@ export const WeekCalendar = ({ range, onToggle, currentDate, data }) => (
   </section>
 );
 
+WeekCalendar.propTypes = {
+  range: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  currentDate: PropTypes.object.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 const Calendar = ({
   type,
   range,
   currentDate,
   onToggle,
+  onDragStart,
+  onDrop,
   data,
 }) => (
   <article className="calendar">
     {
       type === 'month'
-        ? <MonthCalendar range={range} onToggle={onToggle} currentDate={currentDate} data={data} />
-        : <WeekCalendar range={range} onToggle={onToggle} currentDate={currentDate} data={data} />
+        ? (
+          <MonthCalendar
+            range={range}
+            onToggle={onToggle}
+            onDragStart={onDragStart}
+            onDrop={onDrop}
+            currentDate={currentDate}
+            data={data}
+          />
+        )
+        : (
+          <WeekCalendar
+            range={range}
+            onToggle={onToggle}
+            onDragStart={onDragStart}
+            onDrop={onDrop}
+            currentDate={currentDate}
+            data={data}
+          />
+        )
     }
   </article>
 );
@@ -193,6 +292,8 @@ Calendar.propTypes = {
   range: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   onToggle: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
 };
 
 export default Calendar;

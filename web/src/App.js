@@ -29,6 +29,8 @@ class App extends Component {
     this.onDelete = this.onDelete.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
+    this.onDrop = this.onDrop.bind(this);
     const defaultDate = moment().startOf('month');
     const { start_date, end_date, items } = monthRange(defaultDate);
     this.state = {
@@ -279,6 +281,55 @@ class App extends Component {
     });
   }
 
+  onDragStart(e, props) {
+    const { event } = props;
+    e.dataTransfer.setData('event_data', JSON.stringify(event));
+  }
+
+  onDrop(e, props) {
+    const { calendar } = this.state;
+    const { type, hour, dateObj } = props;
+    const { year, month, date } = dateObj;
+    const event = JSON.parse(e.dataTransfer.getData('event_data'));
+    const { title, _id, start_date } = event;
+
+    let newStartDate;
+    let newEndDate;
+    if (type === 'week') {
+      newStartDate = moment(`${year}-${month}-${date} ${hour}:00`, 'YYYY-M-D hh:mm');
+      newEndDate = moment(newStartDate).add(1, 'hours');
+    }
+
+    if (type === 'month') {
+      newStartDate = (
+        moment(start_date)
+          .year(year)
+          .month(month - 1)
+          .date(date)
+      );
+      newEndDate = moment(newStartDate).add(1, 'hours');
+    }
+
+    const putData = {
+      title,
+      start_date: newStartDate.toISOString(),
+      end_date: newEndDate.toISOString(),
+    };
+    this.setLoading();
+    axios.put(`/api/calendar/${_id}`, putData)
+      .then(() => {
+        this.setLoading();
+        const newCalendar = [...calendar].filter(item => item._id !== _id);
+        putData._id = _id
+        newCalendar.push(putData);
+        this.setState({ calendar: newCalendar });
+      }, (error) => {
+        // TODO: error notification comes here!
+        this.setLoading();
+        console.log('error: ', error);
+      });
+  }
+
   setLoading() {
     const { isLoading } = this.state;
     this.setState({
@@ -324,6 +375,8 @@ class App extends Component {
           range={range}
           currentDate={date}
           onToggle={this.onToggle}
+          onDragStart={this.onDragStart}
+          onDrop={this.onDrop}
           data={calendar}
         />
         <CalModal
