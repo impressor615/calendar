@@ -1,5 +1,4 @@
 const express = require('express');
-const _ = require('lodash');
 const errors = require('../errors');
 const { Calendar } = require('../models');
 const { sendError } = require('../utils/routeUtils');
@@ -113,11 +112,11 @@ router.put('/:id', async (req, res) => {
     return;
   }
 
-  const putData = _.pick({
+  const putData = {
     start_date,
     end_date,
     title,
-  }, _.identity);
+  };
 
   await Calendar.findByIdAndUpdate({ _id: id }, putData, { useFindAndModify: false }).exec();
   return res.json({});
