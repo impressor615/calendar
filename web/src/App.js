@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import axios from 'axios';
 
 import CalController from 'components/CalController';
 import Calendar from 'components/Calendar';
@@ -18,18 +19,46 @@ class App extends Component {
     this.onToggle = this.onToggle.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     const defaultDate = moment().startOf('month');
     this.state = {
       date: defaultDate,
       type: 'month',
       range: monthRanges(defaultDate),
       isOpen: false,
+      calendar: {},
       event: {
         title: '',
-        start_date: moment(),
-        end_date: moment().add(1, 'hours'),
+        start_date: defaultDate,
+        end_date: moment(defaultDate).add(1, 'hours'),
       },
     };
+  }
+
+  componentDidMount() {
+    const { date } = this.state;
+    const start_date  = date.toISOString();
+    const end_date = moment(date).add(1, 'months').toISOString();
+    axios.get('/api/calendar', { params: { start_date, end_date } })
+    .then((res) => {
+      const { data } = res;
+      const calendar = data.reduce((current, next) => {
+        const { start_date, end_date, title } = next;
+        const momentObj = moment(start_date);
+        const dateKey = momentObj.format('YYYY-MM-DD');
+        const hourKey = momentObj.hour();
+        current[dateKey] = {
+          ...current[dateKey],
+          [hourKey]: {
+            title,
+            start_date,
+            end_date,
+          }
+        };
+        return current;
+      }, {});
+      this.setState({ calendar });
+    });
   }
 
   onArrowClick(e) {
@@ -79,10 +108,44 @@ class App extends Component {
     });
   }
 
-  onToggle() {
-    const { isOpen } = this.state;
+  onToggle(e, props = {}) {
+    e.stopPropagation();
+    const { type, dateObj, hour } = props;
+    const { isOpen, event } = this.state;
+
+    if (isOpen) {
+      this.setState({
+        isOpen: !isOpen,
+      });
+      return;
+    }
+
+    const newEvent = {}
+    if (type === 'month') {
+      const startDate = moment(dateObj.moment).hours(9);
+      newEvent.start_date = startDate;
+      newEvent.end_date = moment(startDate).add(1, 'hours');
+    }
+
+    if (type === 'week') {
+      const startDate = moment(`${dateObj.year}-${dateObj.month}-${dateObj.date} ${hour}:00`, 'YYYY-M-D hh:mm');
+      newEvent.start_date = startDate;
+      newEvent.endDate = moment(startDate).add(1, 'hours');
+    }
+
+    if (type === 'event') {
+      const { start_date, end_date, title } = dateObj;
+      newEvent.title = title;
+      newEvent.start_date = moment(start_date);
+      newEvent.end_date = moment(end_date);
+    }
+
     this.setState({
       isOpen: !isOpen,
+      event: {
+        ...event,
+        ...newEvent,
+      },
     });
   }
 
@@ -109,6 +172,35 @@ class App extends Component {
     });
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    const { event, calendar } = this.state;
+    const { title, start_date, end_date } = event;
+    const postData = {
+      title,
+      start_date: start_date.toISOString(),
+      end_date: end_date.toISOString(),
+    };
+    axios.post('/api/calendar', postData)
+    .then(() => {
+      const newCalendar = { ...calendar };
+      const dateKey = start_date.format('YYYY-MM-DD');
+      const hourKey = start_date.hour();
+      newCalendar[dateKey] = {
+        ...newCalendar[dateKey],
+        [hourKey]: {
+          title,
+          start_date,
+          end_date,
+        }
+      };
+      this.setState({ calendar: newCalendar, isOpen: false });
+    }, (error) => {
+      // TODO: notification comes here
+      console.log(error);
+    });
+  }
+
   render() {
     const {
       type,
@@ -116,6 +208,7 @@ class App extends Component {
       range,
       isOpen,
       event,
+      calendar,
     } = this.state;
     const title = date.format('YYYY년 MM월');
     return (
@@ -129,13 +222,16 @@ class App extends Component {
         <Calendar
           type={type}
           range={range}
+          currentDate={date}
           onToggle={this.onToggle}
+          data={calendar}
         />
         <CalModal
           isOpen={isOpen}
           onToggle={this.onToggle}
           onChange={this.onTitleChange}
           onDateChange={this.onDateChange}
+          onSubmit={this.onSubmit}
           event={event}
         />
       </section>

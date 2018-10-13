@@ -50,8 +50,21 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
       삭제
     </button>
     <button
-      className="btn secondary"
-      onClick={[Function]}
+      className="submit-btn btn secondary"
+      onClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      type="submit"
     >
       저장
     </button>

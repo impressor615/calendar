@@ -27,13 +27,11 @@
 
 .calendar .cal-block {
   position: relative;
-  height: 120px;
+  height: 140px;
   padding: 10px;
   border: 0;
   border-left: 2px solid black;
   border-top: 2px solid black;
-
-  box-sizing: content-box;
 }
 
 .calendar .cal-block.sm {
@@ -56,4 +54,19 @@
 .calendar .day {
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.calendar .event-block {
+  font-size: 12px;
+  text-align: left;
+  padding: 5px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar .event-block:hover {
+  color: white;
+  background: $secondary-color;
 }

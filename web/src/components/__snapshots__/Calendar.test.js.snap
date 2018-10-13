@@ -2,44 +2,231 @@
 
 exports[`<Calendar /> should be matched with the snapshot 1`] = `
 <Calendar
+  currentDate={"2018-10-12T15:00:00.000Z"}
+  data={
+    Object {
+      "2018-10-13": Object {
+        "9": Object {
+          "end_date": "2018-10-12T16:00:00.000Z",
+          "start_date": "2018-10-12T15:00:00.000Z",
+          "title": "title",
+        },
+      },
+    }
+  }
   onToggle={[MockFunction]}
   range={
     Array [
-      30,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      1,
-      2,
-      3,
+      Object {
+        "date": 30,
+        "moment": "2018-09-29T15:00:00.000Z",
+        "month": 9,
+        "year": 2018,
+      },
+      Object {
+        "date": 1,
+        "moment": "2018-09-30T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 2,
+        "moment": "2018-10-01T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 3,
+        "moment": "2018-10-02T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 4,
+        "moment": "2018-10-03T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 5,
+        "moment": "2018-10-04T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 6,
+        "moment": "2018-10-05T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 7,
+        "moment": "2018-10-06T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 8,
+        "moment": "2018-10-07T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 9,
+        "moment": "2018-10-08T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 10,
+        "moment": "2018-10-09T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 11,
+        "moment": "2018-10-10T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 12,
+        "moment": "2018-10-11T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 13,
+        "moment": "2018-10-12T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 14,
+        "moment": "2018-10-13T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 15,
+        "moment": "2018-10-14T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 16,
+        "moment": "2018-10-15T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 17,
+        "moment": "2018-10-16T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 18,
+        "moment": "2018-10-17T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 19,
+        "moment": "2018-10-18T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 20,
+        "moment": "2018-10-19T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 21,
+        "moment": "2018-10-20T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 22,
+        "moment": "2018-10-21T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 23,
+        "moment": "2018-10-22T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 24,
+        "moment": "2018-10-23T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 25,
+        "moment": "2018-10-24T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 26,
+        "moment": "2018-10-25T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 27,
+        "moment": "2018-10-26T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 28,
+        "moment": "2018-10-27T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 29,
+        "moment": "2018-10-28T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 30,
+        "moment": "2018-10-29T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 31,
+        "moment": "2018-10-30T15:00:00.000Z",
+        "month": 10,
+        "year": 2018,
+      },
+      Object {
+        "date": 1,
+        "moment": "2018-10-31T15:00:00.000Z",
+        "month": 11,
+        "year": 2018,
+      },
+      Object {
+        "date": 2,
+        "moment": "2018-11-01T15:00:00.000Z",
+        "month": 11,
+        "year": 2018,
+      },
+      Object {
+        "date": 3,
+        "moment": "2018-11-02T15:00:00.000Z",
+        "month": 11,
+        "year": 2018,
+      },
     ]
   }
   type="month"
@@ -48,44 +235,231 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
     className="calendar"
   >
     <MonthCalendar
+      currentDate={"2018-10-12T15:00:00.000Z"}
+      data={
+        Object {
+          "2018-10-13": Object {
+            "9": Object {
+              "end_date": "2018-10-12T16:00:00.000Z",
+              "start_date": "2018-10-12T15:00:00.000Z",
+              "title": "title",
+            },
+          },
+        }
+      }
       onToggle={[MockFunction]}
       range={
         Array [
-          30,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
-          18,
-          19,
-          20,
-          21,
-          22,
-          23,
-          24,
-          25,
-          26,
-          27,
-          28,
-          29,
-          30,
-          31,
-          1,
-          2,
-          3,
+          Object {
+            "date": 30,
+            "moment": "2018-09-29T15:00:00.000Z",
+            "month": 9,
+            "year": 2018,
+          },
+          Object {
+            "date": 1,
+            "moment": "2018-09-30T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 2,
+            "moment": "2018-10-01T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 3,
+            "moment": "2018-10-02T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 4,
+            "moment": "2018-10-03T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 5,
+            "moment": "2018-10-04T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 6,
+            "moment": "2018-10-05T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 7,
+            "moment": "2018-10-06T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 8,
+            "moment": "2018-10-07T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 9,
+            "moment": "2018-10-08T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 10,
+            "moment": "2018-10-09T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 11,
+            "moment": "2018-10-10T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 12,
+            "moment": "2018-10-11T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 13,
+            "moment": "2018-10-12T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 14,
+            "moment": "2018-10-13T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 15,
+            "moment": "2018-10-14T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 16,
+            "moment": "2018-10-15T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 17,
+            "moment": "2018-10-16T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 18,
+            "moment": "2018-10-17T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 19,
+            "moment": "2018-10-18T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 20,
+            "moment": "2018-10-19T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 21,
+            "moment": "2018-10-20T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 22,
+            "moment": "2018-10-21T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 23,
+            "moment": "2018-10-22T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 24,
+            "moment": "2018-10-23T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 25,
+            "moment": "2018-10-24T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 26,
+            "moment": "2018-10-25T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 27,
+            "moment": "2018-10-26T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 28,
+            "moment": "2018-10-27T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 29,
+            "moment": "2018-10-28T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 30,
+            "moment": "2018-10-29T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 31,
+            "moment": "2018-10-30T15:00:00.000Z",
+            "month": 10,
+            "year": 2018,
+          },
+          Object {
+            "date": 1,
+            "moment": "2018-10-31T15:00:00.000Z",
+            "month": 11,
+            "year": 2018,
+          },
+          Object {
+            "date": 2,
+            "moment": "2018-11-01T15:00:00.000Z",
+            "month": 11,
+            "year": 2018,
+          },
+          Object {
+            "date": 3,
+            "moment": "2018-11-02T15:00:00.000Z",
+            "month": 11,
+            "year": 2018,
+          },
         ]
       }
     >
@@ -93,13 +467,22 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
         className="month-calendar"
       >
         <CalendarDay
-          date={30}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 30,
+              "moment": "2018-09-29T15:00:00.000Z",
+              "month": 9,
+              "year": 2018,
+            }
+          }
           day="일"
+          key="0"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -107,18 +490,27 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               일
             </div>
             <div>
-              30
+              9월 30일
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={1}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 1,
+              "moment": "2018-09-30T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
           day="월"
+          key="1"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -128,16 +520,25 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
             <div>
               1
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={2}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 2,
+              "moment": "2018-10-01T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
           day="화"
+          key="2"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -147,16 +548,25 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
             <div>
               2
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={3}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 3,
+              "moment": "2018-10-02T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
           day="수"
+          key="3"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -166,16 +576,25 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
             <div>
               3
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={4}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 4,
+              "moment": "2018-10-03T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
           day="목"
+          key="4"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -185,16 +604,25 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
             <div>
               4
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={5}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 5,
+              "moment": "2018-10-04T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
           day="금"
+          key="5"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -204,16 +632,25 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
             <div>
               5
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={6}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 6,
+              "moment": "2018-10-05T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
           day="토"
+          key="6"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div
               className="day"
@@ -223,371 +660,636 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
             <div>
               6
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={7}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 7,
+              "moment": "2018-10-06T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="7"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               7
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={8}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 8,
+              "moment": "2018-10-07T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="8"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               8
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={9}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 9,
+              "moment": "2018-10-08T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="9"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               9
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={10}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 10,
+              "moment": "2018-10-09T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="10"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               10
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={11}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 11,
+              "moment": "2018-10-10T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="11"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               11
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={12}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 12,
+              "moment": "2018-10-11T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="12"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               12
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={13}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 13,
+              "moment": "2018-10-12T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="13"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               13
             </div>
-          </button>
+            <EventBlock
+              key="0"
+              onToggle={[Function]}
+            >
+              <button
+                className="event-block btn"
+                onClick={[Function]}
+                type="button"
+              >
+                ○ 
+                9:00 title
+              </button>
+            </EventBlock>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={14}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 14,
+              "moment": "2018-10-13T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="14"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               14
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={15}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 15,
+              "moment": "2018-10-14T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="15"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               15
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={16}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 16,
+              "moment": "2018-10-15T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="16"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               16
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={17}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 17,
+              "moment": "2018-10-16T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="17"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               17
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={18}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 18,
+              "moment": "2018-10-17T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="18"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               18
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={19}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 19,
+              "moment": "2018-10-18T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="19"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               19
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={20}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 20,
+              "moment": "2018-10-19T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="20"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               20
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={21}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 21,
+              "moment": "2018-10-20T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="21"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               21
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={22}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 22,
+              "moment": "2018-10-21T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="22"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               22
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={23}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 23,
+              "moment": "2018-10-22T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="23"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               23
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={24}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 24,
+              "moment": "2018-10-23T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="24"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               24
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={25}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 25,
+              "moment": "2018-10-24T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="25"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               25
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={26}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 26,
+              "moment": "2018-10-25T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="26"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               26
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={27}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 27,
+              "moment": "2018-10-26T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="27"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               27
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={28}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 28,
+              "moment": "2018-10-27T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="28"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               28
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={29}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 29,
+              "moment": "2018-10-28T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="29"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               29
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={30}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 30,
+              "moment": "2018-10-29T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="30"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               30
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={31}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 31,
+              "moment": "2018-10-30T15:00:00.000Z",
+              "month": 10,
+              "year": 2018,
+            }
+          }
+          key="31"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
               31
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={1}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 1,
+              "moment": "2018-10-31T15:00:00.000Z",
+              "month": 11,
+              "year": 2018,
+            }
+          }
+          key="32"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
-              1
+              11월 1일
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={2}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 2,
+              "moment": "2018-11-01T15:00:00.000Z",
+              "month": 11,
+              "year": 2018,
+            }
+          }
+          key="33"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
-              2
+              11월 2일
             </div>
-          </button>
+          </div>
         </CalendarDay>
         <CalendarDay
-          date={3}
+          currentDate={"2018-10-12T15:00:00.000Z"}
+          dateObj={
+            Object {
+              "date": 3,
+              "moment": "2018-11-02T15:00:00.000Z",
+              "month": 11,
+              "year": 2018,
+            }
+          }
+          key="34"
           onToggle={[MockFunction]}
         >
-          <button
+          <div
             className="cal-block"
-            onClick={[MockFunction]}
+            onClick={[Function]}
           >
             <div>
-              3
+              11월 3일
             </div>
-          </button>
+          </div>
         </CalendarDay>
       </section>
     </MonthCalendar>

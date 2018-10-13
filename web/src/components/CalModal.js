@@ -10,6 +10,7 @@ const CalModal = ({
   onToggle,
   onChange,
   onDateChange,
+  onSubmit,
   event,
 }) => (
   <Modal
@@ -47,8 +48,9 @@ const CalModal = ({
         삭제
       </button>
       <button
-        className="btn secondary"
-        onClick={() => {}}
+        type="submit"
+        onClick={onSubmit}
+        className="submit-btn btn secondary"
       >
         저장
       </button>
@@ -61,6 +63,7 @@ CalModal.propTypes = {
   onToggle: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onDateChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   event: PropTypes.object.isRequired,
 };
 
