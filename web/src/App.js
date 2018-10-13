@@ -12,11 +12,12 @@ import { getErrorMsg } from 'utils/errorUtils';
 
 import CONSTANTS from './constants';
 
+const authAxios = axios.create({ headers: { 'x-access-token': process.env.REACT_APP_SECRET } });
 const { MOMENTS, NOTIFICATION } = CONSTANTS;
 const fetchEvents = (startDate, endDate) => {
   const start_date = startDate.toISOString();
   const end_date = endDate.toISOString();
-  return axios.get('/api/calendar', { params: { start_date, end_date }})
+  return authAxios.get('/api/calendar', { params: { start_date, end_date }})
     .then(res => res.data)
 };
 
@@ -206,7 +207,7 @@ class App extends Component {
       end_date: end_date.toISOString(),
     };
     this.setLoading();
-    axios.put(`/api/calendar/${_id}`, putData)
+    authAxios.put(`/api/calendar/${_id}`, putData)
       .then(() => {
         this.setLoading();
         const newCalendar = [ ...calendar ].filter(item => item._id !== _id);
@@ -241,7 +242,7 @@ class App extends Component {
     }
 
     this.setLoading();
-    axios.delete(`/api/calendar/${_id}`)
+    authAxios.delete(`/api/calendar/${_id}`)
     .then(() => {
       this.setLoading();
       const newCalendar = [ ...calendar ].filter(item => item._id !== _id);
@@ -276,7 +277,7 @@ class App extends Component {
       end_date: end_date.toISOString(),
     };
     this.setLoading();
-    axios.post('/api/calendar', postData)
+    authAxios.post('/api/calendar', postData)
     .then((res) => {
       this.setLoading();
       const newCalendar = [...calendar];
@@ -341,7 +342,7 @@ class App extends Component {
       end_date: newEndDate.toISOString(),
     };
     this.setLoading();
-    axios.put(`/api/calendar/${_id}`, putData)
+    authAxios.put(`/api/calendar/${_id}`, putData)
       .then(() => {
         this.setLoading();
         const newCalendar = [...calendar].filter(item => item._id !== _id);
