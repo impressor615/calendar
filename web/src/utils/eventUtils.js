@@ -1,0 +1,1 @@
+export const eventBind = (onEvent, props) => event => onEvent(event, props);
