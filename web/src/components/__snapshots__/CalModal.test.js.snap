@@ -7,7 +7,19 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
 >
   <ModalDialog>
     <ModalHeader
-      onToggle={[MockFunction]}
+      onToggle={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
     >
       일정 추가 및 변경
     </ModalHeader>
@@ -39,14 +51,38 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
     </ModalBody>
     <ModalFooter>
       <button
-        className="btn primary"
-        onClick={[MockFunction]}
+        className="close-btn btn primary"
+        onClick={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          }
+        }
       >
         취소
       </button>
       <button
-        className="btn primary"
-        onClick={[Function]}
+        className="delete-btn btn primary"
+        onClick={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          }
+        }
       >
         삭제
       </button>

@@ -11,6 +11,7 @@ const CalModal = ({
   onToggle,
   onChange,
   onDateChange,
+  onDelete,
   onSubmit,
   event,
 }) => (
@@ -38,22 +39,27 @@ const CalModal = ({
       </ModalBody>
       <ModalFooter>
         <button
-          className="btn primary"
           onClick={onToggle}
+          className="close-btn btn primary"
         >
           취소
         </button>
-        <button
-          className="btn primary"
-          onClick={() => {}}
-        >
-          삭제
-        </button>
+        {
+          event._id
+            ? (
+              <button
+                onClick={onDelete}
+                className="delete-btn btn primary"
+              >
+                삭제
+              </button>
+            ) : null
+        }
         <button
           type="submit"
+          disabled={isLoading}
           onClick={onSubmit}
           className="submit-btn btn secondary"
-          disabled={isLoading}
         >
           저장
         </button>
@@ -68,6 +74,7 @@ CalModal.propTypes = {
   onToggle: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onDateChange: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   event: PropTypes.object.isRequired,
 };

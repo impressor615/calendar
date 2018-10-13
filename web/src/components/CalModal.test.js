@@ -9,6 +9,7 @@ describe('<CalModal />', () => {
   const onToggle = jest.fn();
   const onChange = jest.fn();
   const onDateChange = jest.fn();
+  const onDelete = jest.fn();
   const onSubmit = jest.fn();
   const startDate = moment('2018-10-13');
   const endDate = moment('2018-10-13').add(1, 'hours');
@@ -18,8 +19,10 @@ describe('<CalModal />', () => {
     onToggle,
     onChange,
     onDateChange,
+    onDelete,
     onSubmit,
     event: {
+      _id: '_id',
       title: 'title',
       start_date: startDate,
       end_date: endDate,
@@ -37,8 +40,12 @@ describe('<CalModal />', () => {
   it('events should be fired properly', () => {
     const wrapper = shallow(<CalModal {...props} />);
     wrapper.find('input#title').simulate('change');
+    wrapper.find('button.close-btn').simulate('click');
+    wrapper.find('button.delete-btn').simulate('click');
     wrapper.find('button.submit-btn').simulate('click');
     expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onToggle).toHaveBeenCalledTimes(1);
+    expect(onDelete).toHaveBeenCalledTimes(1);
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 

@@ -18,13 +18,14 @@ const fetchEvents = (startDate, endDate) => {
     .then((res) => {
       const { data } = res;
       return data.reduce((current, next) => {
-        const { start_date, end_date, title } = next;
+        const { _id, start_date, end_date, title } = next;
         const momentObj = moment(start_date);
         const dateKey = momentObj.format('YYYY-MM-DD');
         const hourKey = getHourKey(momentObj.hour());
         current[dateKey] = {
           ...current[dateKey],
           [hourKey]: {
+            _id,
             title,
             start_date,
             end_date,
@@ -43,6 +44,7 @@ class App extends Component {
     this.onToggle = this.onToggle.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
+    this.onDelete = this.onDelete.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     const defaultDate = moment().startOf('month');
     const { start_date, end_date, items } = monthRange(defaultDate);
@@ -56,6 +58,7 @@ class App extends Component {
       isOpen: false,
       calendar: {},
       event: {
+        _id: '',
         title: '',
         start_date: defaultDate,
         end_date: moment(defaultDate).add(1, 'hours'),
@@ -65,8 +68,10 @@ class App extends Component {
 
   componentDidMount() {
     const { start_date, end_date } = this.state;
+    this.setLoading();
     fetchEvents(start_date, end_date)
     .then((result) => {
+      this.setLoading();
       this.setState({
         calendar: result,
       });
@@ -78,8 +83,10 @@ class App extends Component {
     const prevEndDate = prevState.end_date;
     const { start_date, end_date } = this.state;
     if (!prevStartDate.isSame(start_date) || !prevEndDate.isSame(end_date)) {
+      this.setLoading();
       fetchEvents(start_date, end_date)
       .then((result) => {
+        this.setLoading();
         this.setState({
           calendar: result,
         });
@@ -96,18 +103,7 @@ class App extends Component {
         ? moment(date).add(1, MOMENTS[type])
         : moment(date).subtract(1, MOMENTS[type])
     );
-    const { start_date, end_date, items } = (
-      type === 'month'
-        ? monthRange(newDate)
-        : weekRange(newDate)
-    );
-
-    this.setState({
-      date: newDate,
-      range: items,
-      start_date,
-      end_date,
-    });
+    this.updateCalendar(type, newDate);
   }
 
   onTypeClick(e) {
@@ -123,19 +119,7 @@ class App extends Component {
         ? moment(date).startOf('month')
         : moment(date).startOf('week')
     );
-    const { start_date, end_date, items } = (
-      (name === 'month')
-        ? monthRange(newDate)
-        : weekRange(newDate)
-    );
-
-    this.setState({
-      type: name,
-      date: newDate,
-      range: items,
-      start_date,
-      end_date,
-    });
+    this.updateCalendar(name, newDate, { type: name });
   }
 
   onToggle(e, props = {}) {
@@ -146,6 +130,11 @@ class App extends Component {
     if (isOpen) {
       this.setState({
         isOpen: !isOpen,
+        event: {
+          ...event,
+          _id: '',
+          title: '',
+        }
       });
       return;
     }
@@ -164,7 +153,8 @@ class App extends Component {
     }
 
     if (type === 'event') {
-      const { start_date, end_date, title } = dateObj;
+      const { start_date, end_date, title, _id } = dateObj;
+      newEvent._id = _id;
       newEvent.title = title;
       newEvent.start_date = moment(start_date);
       newEvent.end_date = moment(end_date);
@@ -202,6 +192,41 @@ class App extends Component {
     });
   }
 
+  onDelete(e) {
+    e.preventDefault();
+    const { event, calendar } = this.state;
+    const { _id, start_date } = event;
+    if (!_id) {
+      return;
+    }
+
+    this.setLoading();
+    axios.delete(`/api/calendar/${_id}`)
+    .then(() => {
+      this.setLoading();
+      const dateKey = start_date.format('YYYY-MM-DD');
+      const hourKey = getHourKey(start_date.hour());
+      const newCalendar = { ...calendar };
+      delete newCalendar[dateKey][hourKey];
+      this.setState({
+        calendar: newCalendar,
+        isOpen: false,
+        event: {
+          ...event,
+          _id: '',
+          title: '',
+        }
+      });
+
+      // TODO: notification comes here
+    }, (error) => {
+      this.setLoading();
+
+      // TODO: error comes here
+      console.log(error);
+    })
+  }
+
   onSubmit(e) {
     e.preventDefault();
     const { event, calendar } = this.state;
@@ -226,7 +251,15 @@ class App extends Component {
           end_date,
         }
       };
-      this.setState({ calendar: newCalendar, isOpen: false });
+      this.setState({
+        calendar: newCalendar,
+        isOpen: false,
+        event: {
+          ...event,
+          _id: '',
+          title: '',
+        }
+      });
     }, (error) => {
       this.setLoading();
       // TODO: notification comes here
@@ -238,6 +271,21 @@ class App extends Component {
     const { isLoading } = this.state;
     this.setState({
       isLoading: !isLoading,
+    });
+  }
+
+  updateCalendar(type, date, nextState) {
+    const { start_date, end_date, items } = (
+      (type === 'month')
+        ? monthRange(date)
+        : weekRange(date)
+    );
+    this.setState({
+      date,
+      start_date,
+      end_date,
+      range: items,
+      ...nextState
     });
   }
 
@@ -272,6 +320,7 @@ class App extends Component {
           onToggle={this.onToggle}
           onChange={this.onTitleChange}
           onDateChange={this.onDateChange}
+          onDelete={this.onDelete}
           onSubmit={this.onSubmit}
           event={event}
         />
