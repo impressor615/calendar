@@ -49,7 +49,7 @@ router.get('/', async (req, res) => {
   const { start_date, end_date } = req.query;
 
   if (!start_date || !end_date) {
-    sendError({ res, langauge: req.language });
+    sendError({ res, language: req.language });
     return;
   }
 
