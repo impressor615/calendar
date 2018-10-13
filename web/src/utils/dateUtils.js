@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export const monthRanges = (date) => {
+export const monthRange = (date) => {
   const startDate = moment(date).startOf('month').startOf('week');
   const endDate = moment(date).endOf('month').endOf('week');
   const diff = endDate.diff(startDate, 'days') + 1;
@@ -15,7 +15,7 @@ export const monthRanges = (date) => {
   });
 };
 
-export const weekRanges = (date) => {
+export const weekRange = (date) => {
   const startDate = moment(date).startOf('week');
   const endDate = moment(date).endOf('week');
   const diff = endDate.diff(startDate, 'days') + 1;

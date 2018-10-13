@@ -8,19 +8,19 @@ import Calendar, {
   CalendarTime,
   EventBlock,
 } from 'components/Calendar';
-import { weekRanges, monthRanges } from 'utils/dateUtils';
+import { weekRange, monthRange } from 'utils/dateUtils';
 
 
 describe('<Calendar />', () => {
   const onToggle = jest.fn();
   const currentDate = moment('2018-10-13');
-  const monthRange = monthRanges(currentDate);
-  const weekRange = weekRanges(currentDate);
+  const mRange = monthRange(currentDate);
+  const wRange = weekRange(currentDate);
   let wrapper;
   const props = {
     type: 'month',
     currentDate,
-    range: monthRange,
+    range: mRange,
     onToggle,
     data: {
       '2018-10-13': {
@@ -44,7 +44,7 @@ describe('<Calendar />', () => {
     expect(wrapper.find(CalendarDay)).toHaveLength(props.range.length);
     expect(wrapper.find(EventBlock)).toHaveLength(1);
 
-    wrapper.setProps({ type: 'week', range: weekRange });
+    wrapper.setProps({ type: 'week', range: wRange });
     expect(wrapper.find(WeekCalendar)).toHaveLength(1);
     expect(wrapper.find(CalendarTime)).toHaveLength(24 * 7);
   });

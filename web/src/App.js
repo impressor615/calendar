@@ -6,7 +6,7 @@ import CalController from 'components/CalController';
 import Calendar from 'components/Calendar';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
-import { monthRanges, weekRanges } from 'utils/dateUtils';
+import { monthRange, weekRange } from 'utils/dateUtils';
 
 import CONSTANTS from './constants';
 
@@ -26,7 +26,7 @@ class App extends Component {
       isLoading: false,
       date: defaultDate,
       type: 'month',
-      range: monthRanges(defaultDate),
+      range: monthRange(defaultDate),
       isOpen: false,
       calendar: {},
       event: {
@@ -74,8 +74,8 @@ class App extends Component {
     );
     const range = (
       type === 'month'
-        ? monthRanges(newDate)
-        : weekRanges(newDate)
+        ? monthRange(newDate)
+        : weekRange(newDate)
     );
 
     this.setState({
@@ -99,8 +99,8 @@ class App extends Component {
     );
     const range = (
       (name === 'month')
-        ? monthRanges(newDate)
-        : weekRanges(newDate)
+        ? monthRange(newDate)
+        : weekRange(newDate)
     );
 
     this.setState({
