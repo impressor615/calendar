@@ -4,6 +4,7 @@ exports[`<Modal /> shoud be matched with the snapshot 1`] = `
 <Modal
   backdrop={true}
   isOpen={true}
+  onToggle={[Function]}
 >
   <Portal
     containerInfo={
@@ -100,6 +101,7 @@ exports[`<Modal /> shoud be matched with the snapshot 1`] = `
       </ModalDialog>
       <div
         className="modal-backdrop"
+        onClick={[Function]}
       />
     </div>
   </Portal>

@@ -19,7 +19,11 @@ const CalModal = ({
   const { _id } = event;
   const onFormSubmit = _id ? onUpdate : onSubmit;
   return (
-    <Modal isOpen={isOpen} className="cal-modal">
+    <Modal
+      isOpen={isOpen}
+      onToggle={onToggle}
+      className="cal-modal"
+    >
       <ModalDialog>
         <ModalHeader onToggle={onToggle}>
           일정 추가 및 변경

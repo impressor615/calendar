@@ -11,6 +11,7 @@ exports[`<Notification /> shoud be matched with the snapshot 1`] = `
     backdrop={false}
     className="notification"
     isOpen={true}
+    onToggle={[Function]}
   >
     <Portal
       containerInfo={

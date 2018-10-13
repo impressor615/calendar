@@ -5,6 +5,19 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
   backdrop={true}
   className="cal-modal"
   isOpen={false}
+  onToggle={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
 >
   <ModalDialog>
     <ModalHeader
