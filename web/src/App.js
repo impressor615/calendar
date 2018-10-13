@@ -243,7 +243,6 @@ class App extends Component {
     })
   }
 
-  // TODO: should return _id
   onSubmit(e) {
     e.preventDefault();
     const { event, calendar } = this.state;
@@ -255,10 +254,15 @@ class App extends Component {
     };
     this.setLoading();
     axios.post('/api/calendar', postData)
-    .then(() => {
+    .then((res) => {
       this.setLoading();
       const newCalendar = [...calendar];
-      newCalendar.push({ title, start_date, end_date })
+      newCalendar.push({
+        _id: res.data._id,
+        title,
+        start_date,
+        end_date,
+      });
       this.setState({
         calendar: newCalendar,
         isOpen: false,
