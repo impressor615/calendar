@@ -64,7 +64,7 @@ describe('Calendar Router', () => {
         .post('/api/calendar')
         .send(postData);
       res.status.should.be.equal(200);
-      res.body.should.be.empty;
+      res.body.should.includes.keys(['_id']);
     });
 
     it('should return error when trying to create calendar events on the same slot', async () => {

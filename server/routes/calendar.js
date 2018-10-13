@@ -41,8 +41,8 @@ router.post('/', async (req, res) => {
     end_date,
   };
 
-  await Calendar.create(postData);
-  return res.json({});
+  const result = await Calendar.create(postData);
+  return res.json({ _id: result._id });
 });
 
 router.get('/', async (req, res) => {
