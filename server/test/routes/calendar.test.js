@@ -1,6 +1,7 @@
 const chai = require('chai');
 const moment = require('moment');
 const qs = require('querystring');
+const CONFIG = require('config');
 
 const {
   app,
@@ -19,6 +20,7 @@ describe('Calendar Router', () => {
   const currentEndDate = moment().add(1, 'days').toISOString();
   const previousStartDate = moment().subtract(2, 'day').toISOString();
   const previousEndDate = moment().subtract(1, 'day').toISOString();
+
   before(async () => {
     const result = await Calendar.create({
       title: 'previous-calendar',
@@ -43,7 +45,7 @@ describe('Calendar Router', () => {
     };
 
     it('should return error when data is not enough', async () => {
-      const res = await chai.request(app).post('/api/calendar');
+      const res = await chai.request(app).post('/api/calendar').set('x-access-token', CONFIG.token);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
@@ -54,7 +56,7 @@ describe('Calendar Router', () => {
         start_date: moment().add(1, 'days').toISOString(),
         end_date: moment().toISOString(),
       };
-      const res = await chai.request(app).post('/api/calendar').send(invalidPostData);
+      const res = await chai.request(app).post('/api/calendar').set('x-access-token', CONFIG.token).send(invalidPostData);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
@@ -62,6 +64,7 @@ describe('Calendar Router', () => {
     it('should create calendar events successfully', async () => {
       const res = await chai.request(app)
         .post('/api/calendar')
+        .set('x-access-token', CONFIG.token)
         .send(postData);
       res.status.should.be.equal(200);
       res.body.should.includes.keys(['_id']);
@@ -70,6 +73,7 @@ describe('Calendar Router', () => {
     it('should return error when trying to create calendar events on the same slot', async () => {
       const res = await chai.request(app)
         .post('/api/calendar')
+        .set('x-access-token', CONFIG.token)
         .send(postData);
       res.status.should.be.equal(400);
       assertError(res.error.text, duplicate_event_exsists);
@@ -85,13 +89,13 @@ describe('Calendar Router', () => {
     });
 
     it('should return error when required query strings is not provided', async () => {
-      const res = await chai.request(app).get('/api/calendar');
+      const res = await chai.request(app).get('/api/calendar').set('x-access-token', CONFIG.token);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
     it('should return correct calendar events lits', async () => {
-      const res = await chai.request(app).get(`/api/calendar?${query}`);
+      const res = await chai.request(app).get(`/api/calendar?${query}`).set('x-access-token', CONFIG.token);
       res.status.should.be.equal(200);
       res.body.forEach((item) => {
         item.should.have.keys(['_id', 'title', 'start_date', 'end_date']);
@@ -102,13 +106,13 @@ describe('Calendar Router', () => {
   describe('PUT /api/calendar', () => {
     it('should return error if invalid ObjectId is provided', async () => {
       const fakeId = 'fakeId';
-      const res = await chai.request(app).put(`/api/calendar/${fakeId}`);
+      const res = await chai.request(app).put(`/api/calendar/${fakeId}`).set('x-access-token', CONFIG.token);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
     it('should return error if nothing exsist in request body', async () => {
-      const res = await chai.request(app).put(`/api/calendar/${calendarId}`);
+      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).set('x-access-token', CONFIG.token);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
@@ -119,7 +123,7 @@ describe('Calendar Router', () => {
         start_date: moment().add(1, 'days').toISOString(),
         end_date: moment().toISOString(),
       };
-      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).send(invalidPutData);
+      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).set('x-access-token', CONFIG.token).send(invalidPutData);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
@@ -130,7 +134,7 @@ describe('Calendar Router', () => {
         start_date: currentStartDate,
         end_date: currentEndDate,
       };
-      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).send(putData);
+      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).set('x-access-token', CONFIG.token).send(putData);
       res.status.should.be.equal(400);
       assertError(res.error.text, duplicate_event_exsists);
     });
@@ -143,7 +147,7 @@ describe('Calendar Router', () => {
         start_date: newStartDate,
         end_date: newEndDate,
       };
-      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).send(putData);
+      const res = await chai.request(app).put(`/api/calendar/${calendarId}`).set('x-access-token', CONFIG.token).send(putData);
       res.status.should.be.equal(200);
       res.body.should.be.empty;
     });
@@ -152,13 +156,13 @@ describe('Calendar Router', () => {
   describe('DELETE /api/calendar/:id', () => {
     it('should return error when invalid ObjectId is provided', async () => {
       const fakeId = 'fakedId';
-      const res = await chai.request(app).delete(`/api/calendar/${fakeId}`);
+      const res = await chai.request(app).delete(`/api/calendar/${fakeId}`).set('x-access-token', CONFIG.token);
       res.status.should.be.equal(400);
       assertError(res.error.text, route_invalid_data);
     });
 
     it('should delete the calendar events successfully', async () => {
-      const res = await chai.request(app).delete(`/api/calendar/${calendarId}`);
+      const res = await chai.request(app).delete(`/api/calendar/${calendarId}`).set('x-access-token', CONFIG.token);
       res.status.should.be.equal(200);
       res.body.should.empty;
     });

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const CONFIG = require('config');
 
 const parseLanguage = require('./middlewares/parseLanguage');
+const auth = require('./middlewares/auth');
 const calendar = require('./routes/calendar');
 const models = require('./models');
 
@@ -28,6 +29,7 @@ const { Calendar } = models;
   // express
   app.use(bodyParser.json());
   app.use(parseLanguage);
+  app.use(auth);
   app.use('/api/calendar', calendar);
   if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {

@@ -9,4 +9,9 @@ module.exports = {
     ko: '중복된 일정이 존재합니다.',
     en: 'duplicate calendar event exsists',
   },
+  not_authenticated: {
+    code: '403',
+    ko: '잘못된 접근입니다.',
+    en: 'not allowed request is rejected',
+  },
 };
