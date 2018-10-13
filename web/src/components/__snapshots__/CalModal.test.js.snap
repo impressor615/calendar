@@ -69,24 +69,6 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
         취소
       </button>
       <button
-        className="delete-btn btn primary"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
-          }
-        }
-      >
-        삭제
-      </button>
-      <button
         className="submit-btn btn secondary"
         disabled={false}
         onClick={

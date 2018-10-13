@@ -9,6 +9,7 @@ describe('<CalModal />', () => {
   const onToggle = jest.fn();
   const onChange = jest.fn();
   const onDateChange = jest.fn();
+  const onUpdate = jest.fn();
   const onDelete = jest.fn();
   const onSubmit = jest.fn();
   const startDate = moment('2018-10-13');
@@ -19,10 +20,11 @@ describe('<CalModal />', () => {
     onToggle,
     onChange,
     onDateChange,
+    onUpdate,
     onDelete,
     onSubmit,
     event: {
-      _id: '_id',
+      _id: '',
       title: 'title',
       start_date: startDate,
       end_date: endDate,
@@ -41,12 +43,22 @@ describe('<CalModal />', () => {
     const wrapper = shallow(<CalModal {...props} />);
     wrapper.find('input#title').simulate('change');
     wrapper.find('button.close-btn').simulate('click');
-    wrapper.find('button.delete-btn').simulate('click');
     wrapper.find('button.submit-btn').simulate('click');
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onToggle).toHaveBeenCalledTimes(1);
-    expect(onDelete).toHaveBeenCalledTimes(1);
     expect(onSubmit).toHaveBeenCalledTimes(1);
+
+    wrapper.setProps({
+      event: {
+        ...props.event,
+        _id: '_id',
+      },
+    });
+
+    wrapper.find('button.delete-btn').simulate('click');
+    wrapper.find('button.submit-btn').simulate('click');
+    expect(onDelete).toHaveBeenCalledTimes(1);
+    expect(onUpdate).toHaveBeenCalledTimes(1);
   });
 
   it('should be matched with the snapshot', () => {

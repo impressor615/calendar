@@ -27,6 +27,7 @@ class App extends Component {
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     const defaultDate = moment().startOf('month');
     const { start_date, end_date, items } = monthRange(defaultDate);
@@ -174,6 +175,42 @@ class App extends Component {
     });
   }
 
+  onUpdate(e) {
+    e.preventDefault();
+    const { event, calendar } = this.state;
+    const { _id, title, start_date, end_date } = event;
+    if(!_id || !title || !start_date || !end_date) {
+      return;
+    }
+
+    const putData = {
+      title,
+      start_date: start_date.toISOString(),
+      end_date: end_date.toISOString(),
+    };
+    this.setLoading();
+    axios.put(`/api/calendar/${_id}`, putData)
+      .then(() => {
+        this.setLoading();
+        const newCalendar = [ ...calendar ].filter(item => item._id !== _id);
+        putData._id = _id;
+        newCalendar.push(putData);
+        this.setState({
+          calendar: newCalendar,
+          isOpen: false,
+          event: {
+            ...event,
+            _id: '',
+            title: '',
+          }
+        });
+      }, (error) => {
+        // TODO: error notification comes here!
+        this.setLoading();
+        console.log('error: ', error);
+      });
+  }
+
   onDelete(e) {
     e.preventDefault();
     const { event, calendar } = this.state;
@@ -291,6 +328,7 @@ class App extends Component {
           onToggle={this.onToggle}
           onChange={this.onTitleChange}
           onDateChange={this.onDateChange}
+          onUpdate={this.onUpdate}
           onDelete={this.onDelete}
           onSubmit={this.onSubmit}
           event={event}

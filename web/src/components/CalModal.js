@@ -11,6 +11,7 @@ const CalModal = ({
   onToggle,
   onChange,
   onDateChange,
+  onUpdate,
   onDelete,
   onSubmit,
   event,
@@ -55,14 +56,28 @@ const CalModal = ({
               </button>
             ) : null
         }
-        <button
-          type="submit"
-          disabled={isLoading}
-          onClick={onSubmit}
-          className="submit-btn btn secondary"
-        >
-          저장
-        </button>
+        {
+          event._id
+            ? (
+              <button
+                type="submit"
+                disabled={isLoading}
+                onClick={onUpdate}
+                className="submit-btn btn secondary"
+              >
+                저장
+              </button>
+            ) : (
+              <button
+                type="submit"
+                disabled={isLoading}
+                onClick={onSubmit}
+                className="submit-btn btn secondary"
+              >
+                저장
+              </button>
+            )
+        }
       </ModalFooter>
     </ModalDialog>
   </Modal>
@@ -75,6 +90,7 @@ CalModal.propTypes = {
   onChange: PropTypes.func.isRequired,
   onDateChange: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   event: PropTypes.object.isRequired,
 };
