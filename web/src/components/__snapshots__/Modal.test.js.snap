@@ -54,47 +54,49 @@ exports[`<Modal /> shoud be matched with the snapshot 1`] = `
     <div
       className="modal"
     >
-      <div
-        className="modal-dialog"
-      >
-        <ModalHeader
-          onToggle={[MockFunction]}
+      <ModalDialog>
+        <div
+          className="modal-dialog"
         >
-          <div
-            className="modal-header"
+          <ModalHeader
+            onToggle={[MockFunction]}
           >
-            <div>
-              일정 추가 및 수정
-            </div>
-            <button
-              className="btn"
-              onClick={[MockFunction]}
-              type="button"
+            <div
+              className="modal-header"
             >
-              ×
-            </button>
-          </div>
-        </ModalHeader>
-        <ModalBody>
-          <div
-            className="modal-body"
-          >
-            ModalBody
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <div
-            className="modal-footer"
-          >
-            <button>
-              취소
-            </button>
-            <button>
-              저장
-            </button>
-          </div>
-        </ModalFooter>
-      </div>
+              <div>
+                일정 추가 및 수정
+              </div>
+              <button
+                className="btn"
+                onClick={[MockFunction]}
+                type="button"
+              >
+                ×
+              </button>
+            </div>
+          </ModalHeader>
+          <ModalBody>
+            <div
+              className="modal-body"
+            >
+              ModalBody
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <div
+              className="modal-footer"
+            >
+              <button>
+                취소
+              </button>
+              <button>
+                저장
+              </button>
+            </div>
+          </ModalFooter>
+        </div>
+      </ModalDialog>
       <div
         className="modal-backdrop"
       />

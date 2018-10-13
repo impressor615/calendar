@@ -43,6 +43,16 @@ ModalFooter.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const ModalDialog = ({ children, ...rest }) => (
+  <div className={classnames('modal-dialog', rest.className)}>
+    { children }
+  </div>
+);
+
+ModalDialog.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const Modal = ({ isOpen, children, ...rest }) => (
   isOpen ? (
     ReactDOM.createPortal(
@@ -50,9 +60,7 @@ const Modal = ({ isOpen, children, ...rest }) => (
         {...rest}
         className={classnames('modal', rest.className)}
       >
-        <div className="modal-dialog">
-          {children}
-        </div>
+        {children}
         <div className="modal-backdrop" />
       </div>,
       document.getElementById('modal-root'),

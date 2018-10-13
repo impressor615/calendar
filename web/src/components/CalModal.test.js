@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import CalModal from 'components/CalModal';
-import { ModalHeader, ModalBody, ModalFooter } from 'components/Modal';
+import { ModalDialog, ModalHeader, ModalBody, ModalFooter } from 'components/Modal';
 
 
 describe('<CalModal />', () => {
@@ -14,6 +14,7 @@ describe('<CalModal />', () => {
   const endDate = moment('2018-10-13').add(1, 'hours');
   const props = {
     isOpen: false,
+    isLoading: false,
     onToggle,
     onChange,
     onDateChange,
@@ -27,6 +28,7 @@ describe('<CalModal />', () => {
 
   it('should be rendered properly', () => {
     const wrapper = shallow(<CalModal {...props} />);
+    expect(wrapper.find(ModalDialog)).toHaveLength(1);
     expect(wrapper.find(ModalHeader)).toHaveLength(1);
     expect(wrapper.find(ModalBody)).toHaveLength(1);
     expect(wrapper.find(ModalFooter)).toHaveLength(1);
