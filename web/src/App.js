@@ -126,7 +126,8 @@ class App extends Component {
 
     const newEvent = {}
     if (type === 'month') {
-      const startDate = moment(dateObj.moment).hours(9);
+      const currentHour = moment().hour();
+      const startDate = moment(dateObj.moment).hours(currentHour);
       newEvent.start_date = startDate;
       newEvent.end_date = moment(startDate).add(1, 'hours');
     }
