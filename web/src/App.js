@@ -22,7 +22,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.onArrowClick = this.onArrowClick.bind(this);
-    this.onTypeClick = this.onTypeClick.bind(this);
+    this.onTypeChange = this.onTypeChange.bind(this);
     this.onToggle = this.onToggle.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
@@ -91,20 +91,20 @@ class App extends Component {
     this.updateCalendar(type, newDate);
   }
 
-  onTypeClick(e) {
+  onTypeChange(e) {
     e.stopPropagation();
     const { name } = e.currentTarget;
-    const { type, date } = this.state;
+    const { type } = this.state;
     if (name === type) {
       return;
     }
 
-    const newDate = (
+    const date = (
       (name === 'month')
-        ? moment(date).startOf('month')
-        : moment(date).startOf('week')
+        ? moment().startOf('month')
+        : moment().startOf('week')
     );
-    this.updateCalendar(name, newDate, { type: name });
+    this.updateCalendar(name, date, { type: name });
   }
 
   onToggle(e, props = {}) {
@@ -368,7 +368,7 @@ class App extends Component {
           type={type}
           currentDate={date}
           onArrowClick={this.onArrowClick}
-          onTypeClick={this.onTypeClick}
+          onTypeChange={this.onTypeChange}
         />
         <Calendar
           type={type}

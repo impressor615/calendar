@@ -6,13 +6,13 @@ import CalController from 'components/CalController';
 
 describe('<CalController />', () => {
   const onArrowClick = jest.fn();
-  const onTypeClick = jest.fn();
+  const onTypeChange = jest.fn();
   const defaultDate = moment('2018-10-13');
   const props = {
     currentDate: defaultDate,
     type: 'months',
     onArrowClick,
-    onTypeClick,
+    onTypeChange,
   };
   it('should be rendered properly', () => {
     const wrapper = shallow(<CalController {...props} />);
@@ -29,7 +29,7 @@ describe('<CalController />', () => {
     wrapper.find('.btn.primary').first().simulate('click');
 
     expect(onArrowClick).toHaveBeenCalledTimes(1);
-    expect(onTypeClick).toHaveBeenCalledTimes(1);
+    expect(onTypeChange).toHaveBeenCalledTimes(1);
   });
 
   it('should be matched with the snapshot', () => {

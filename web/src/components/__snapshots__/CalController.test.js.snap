@@ -16,7 +16,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
       ],
     }
   }
-  onTypeClick={
+  onTypeChange={
     [MockFunction] {
       "calls": Array [
         Array [],

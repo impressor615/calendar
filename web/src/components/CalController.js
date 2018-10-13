@@ -7,7 +7,7 @@ const CalController = ({
   type,
   currentDate,
   onArrowClick,
-  onTypeClick,
+  onTypeChange,
 }) => (
   <article className="controller">
     <div className="controller-wrapper">
@@ -30,7 +30,7 @@ const CalController = ({
         <button
           name="month"
           type="button"
-          onClick={onTypeClick}
+          onClick={onTypeChange}
           className={classnames('btn primary', { active: type === 'month'})}
         >
           월
@@ -38,7 +38,7 @@ const CalController = ({
         <button
           name="week"
           type="button"
-          onClick={onTypeClick}
+          onClick={onTypeChange}
           className={classnames('btn primary', { active: type === 'week'})}
         >
           주
@@ -52,7 +52,7 @@ CalController.propTypes = {
   type: PropTypes.string.isRequired,
   currentDate: PropTypes.object.isRequired,
   onArrowClick: PropTypes.func.isRequired,
-  onTypeClick: PropTypes.func.isRequired,
+  onTypeChange: PropTypes.func.isRequired,
 }
 
 export default CalController;
