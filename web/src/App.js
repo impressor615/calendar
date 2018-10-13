@@ -132,7 +132,7 @@ class App extends Component {
     if (type === 'week') {
       const startDate = moment(`${dateObj.year}-${dateObj.month}-${dateObj.date} ${hour}:00`, 'YYYY-M-D hh:mm');
       newEvent.start_date = startDate;
-      newEvent.endDate = moment(startDate).add(1, 'hours');
+      newEvent.end_date = moment(startDate).add(1, 'hours');
     }
 
     if (type === 'event') {
