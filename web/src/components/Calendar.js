@@ -96,7 +96,7 @@ export const MonthCalendar = ({
         const events = data.filter((item) => {
           const eventDate = moment(item.start_date).format('YYYY-MM-DD');
           return eventDate === blockDate;
-        });
+        }).sort((current, next) => new Date(current.start_date) - new Date(next.start_date));
         return (
           <CalendarDay
             key={index.toString()}
