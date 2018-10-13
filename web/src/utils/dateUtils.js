@@ -29,3 +29,11 @@ export const weekRange = (date) => {
     };
   });
 };
+
+export const getHourKey = (hour) => {
+  let hourKey = hour.toString();
+  if (hour <= 9) {
+    hourKey = `0${hourKey}`;
+  }
+  return hourKey;
+};

@@ -6,7 +6,7 @@ import CalController from 'components/CalController';
 import Calendar from 'components/Calendar';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
-import { monthRange, weekRange } from 'utils/dateUtils';
+import { monthRange, weekRange, getHourKey } from 'utils/dateUtils';
 
 import CONSTANTS from './constants';
 
@@ -48,7 +48,7 @@ class App extends Component {
         const { start_date, end_date, title } = next;
         const momentObj = moment(start_date);
         const dateKey = momentObj.format('YYYY-MM-DD');
-        const hourKey = momentObj.hour();
+        const hourKey = getHourKey(momentObj.hour());
         current[dateKey] = {
           ...current[dateKey],
           [hourKey]: {
@@ -189,7 +189,7 @@ class App extends Component {
       this.setLoading();
       const newCalendar = { ...calendar };
       const dateKey = start_date.format('YYYY-MM-DD');
-      const hourKey = start_date.hour();
+      const hourKey = getHourKey(start_date.hour());
       newCalendar[dateKey] = {
         ...newCalendar[dateKey],
         [hourKey]: {
