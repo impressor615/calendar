@@ -1,4 +1,5 @@
 @import '~normalize.css';
+@import '~react-datepicker/dist/react-datepicker.css';
 
 @import './variables';
 @import './grid';
@@ -7,3 +8,4 @@
 @import './cal-controller';
 @import './calendar';
 @import './modal';
+@import './date-range';

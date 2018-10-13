@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DateRange /> should be matched with the snapshot 1`] = `
+<div
+  className="date-range"
+>
+  <DatePicker
+    allowSameDay={false}
+    dateFormat="YYYY-M-D h:mm A"
+    dateFormatCalendar="MMMM YYYY"
+    disabled={false}
+    disabledKeyboardNavigation={false}
+    dropdownMode="scroll"
+    monthsShown={1}
+    nextMonthButtonLabel="Next month"
+    onBlur={[Function]}
+    onChange={[MockFunction]}
+    onClickOutside={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMonthChange={[Function]}
+    onSelect={[Function]}
+    onYearChange={[Function]}
+    preventOpenOnFocus={false}
+    previousMonthButtonLabel="Previous Month"
+    readOnly={false}
+    selected={"2018-10-12T15:00:00.000Z"}
+    shouldCloseOnSelect={true}
+    showTimeSelect={true}
+    timeCaption="time"
+    timeIntervals={60}
+    withPortal={false}
+  />
+  <div>
+    ~
+  </div>
+  <div>
+    2018-10-13 1:00 AM
+  </div>
+</div>
+`;
