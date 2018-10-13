@@ -10,41 +10,14 @@ import { monthRange, weekRange, getHourKey } from 'utils/dateUtils';
 
 import CONSTANTS from './constants';
 
-
 const { MOMENTS } = CONSTANTS;
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.onArrowClick = this.onArrowClick.bind(this);
-    this.onTypeClick = this.onTypeClick.bind(this);
-    this.onToggle = this.onToggle.bind(this);
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onDateChange = this.onDateChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    const defaultDate = moment().startOf('month');
-    this.state = {
-      isLoading: false,
-      date: defaultDate,
-      type: 'month',
-      range: monthRange(defaultDate),
-      isOpen: false,
-      calendar: {},
-      event: {
-        title: '',
-        start_date: defaultDate,
-        end_date: moment(defaultDate).add(1, 'hours'),
-      },
-    };
-  }
-
-  componentDidMount() {
-    const { date } = this.state;
-    const start_date  = date.toISOString();
-    const end_date = moment(date).add(1, 'months').toISOString();
-    axios.get('/api/calendar', { params: { start_date, end_date } })
+const fetchEvents = (startDate, endDate) => {
+  const start_date = startDate.toISOString();
+  const end_date = endDate.toISOString();
+  return axios.get('/api/calendar', { params: { start_date, end_date }})
     .then((res) => {
       const { data } = res;
-      const calendar = data.reduce((current, next) => {
+      return data.reduce((current, next) => {
         const { start_date, end_date, title } = next;
         const momentObj = moment(start_date);
         const dateKey = momentObj.format('YYYY-MM-DD');
@@ -59,8 +32,59 @@ class App extends Component {
         };
         return current;
       }, {});
-      this.setState({ calendar });
     });
+};
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.onArrowClick = this.onArrowClick.bind(this);
+    this.onTypeClick = this.onTypeClick.bind(this);
+    this.onToggle = this.onToggle.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    const defaultDate = moment().startOf('month');
+    const { start_date, end_date, items } = monthRange(defaultDate);
+    this.state = {
+      isLoading: false,
+      date: defaultDate,
+      type: 'month',
+      start_date,
+      end_date,
+      range: items,
+      isOpen: false,
+      calendar: {},
+      event: {
+        title: '',
+        start_date: defaultDate,
+        end_date: moment(defaultDate).add(1, 'hours'),
+      },
+    };
+  }
+
+  componentDidMount() {
+    const { start_date, end_date } = this.state;
+    fetchEvents(start_date, end_date)
+    .then((result) => {
+      this.setState({
+        calendar: result,
+      });
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevStartDate = prevState.start_date;
+    const prevEndDate = prevState.end_date;
+    const { start_date, end_date } = this.state;
+    if (!prevStartDate.isSame(start_date) || !prevEndDate.isSame(end_date)) {
+      fetchEvents(start_date, end_date)
+      .then((result) => {
+        this.setState({
+          calendar: result,
+        });
+      });
+    }
   }
 
   onArrowClick(e) {
@@ -72,7 +96,7 @@ class App extends Component {
         ? moment(date).add(1, MOMENTS[type])
         : moment(date).subtract(1, MOMENTS[type])
     );
-    const range = (
+    const { start_date, end_date, items } = (
       type === 'month'
         ? monthRange(newDate)
         : weekRange(newDate)
@@ -80,7 +104,9 @@ class App extends Component {
 
     this.setState({
       date: newDate,
-      range,
+      range: items,
+      start_date,
+      end_date,
     });
   }
 
@@ -97,7 +123,7 @@ class App extends Component {
         ? moment(date).startOf('month')
         : moment(date).startOf('week')
     );
-    const range = (
+    const { start_date, end_date, items } = (
       (name === 'month')
         ? monthRange(newDate)
         : weekRange(newDate)
@@ -106,7 +132,9 @@ class App extends Component {
     this.setState({
       type: name,
       date: newDate,
-      range,
+      range: items,
+      start_date,
+      end_date,
     });
   }
 
@@ -223,12 +251,11 @@ class App extends Component {
       calendar,
       isLoading,
     } = this.state;
-    const title = date.format('YYYY년 MM월');
     return (
       <section className="container">
         <CalController
           type={type}
-          title={title}
+          currentDate={date}
           onArrowClick={this.onArrowClick}
           onTypeClick={this.onTypeClick}
         />

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 const CalController = ({
   type,
-  title,
+  currentDate,
   onArrowClick,
   onTypeClick,
 }) => (
@@ -18,7 +18,7 @@ const CalController = ({
           className="btn arrow left"
           onClick={onArrowClick}
         />
-        <div className="title">{title}</div>
+        <div className="title">{currentDate.format('YYYY년 MM월')}</div>
         <button
           name="next"
           type="button"
@@ -50,7 +50,7 @@ const CalController = ({
 
 CalController.propTypes = {
   type: PropTypes.string.isRequired,
-  title: PropTypes.node.isRequired,
+  currentDate: PropTypes.object.isRequired,
   onArrowClick: PropTypes.func.isRequired,
   onTypeClick: PropTypes.func.isRequired,
 }

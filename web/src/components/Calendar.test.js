@@ -20,11 +20,11 @@ describe('<Calendar />', () => {
   const props = {
     type: 'month',
     currentDate,
-    range: mRange,
+    range: mRange.items,
     onToggle,
     data: {
       '2018-10-13': {
-        '9': {
+        '09': {
           title: 'title',
           start_date: moment(currentDate).toISOString(),
           end_date: moment(currentDate).add(1, 'hours').toISOString(),
@@ -44,9 +44,10 @@ describe('<Calendar />', () => {
     expect(wrapper.find(CalendarDay)).toHaveLength(props.range.length);
     expect(wrapper.find(EventBlock)).toHaveLength(1);
 
-    wrapper.setProps({ type: 'week', range: wRange });
+    wrapper.setProps({ type: 'week', range: wRange.items });
     expect(wrapper.find(WeekCalendar)).toHaveLength(1);
     expect(wrapper.find(CalendarTime)).toHaveLength(24 * 7);
+    expect(wrapper.find(EventBlock)).toHaveLength(1);
   });
 
   it('should be matched with the snapshot', () => {

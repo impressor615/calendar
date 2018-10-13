@@ -6,7 +6,7 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
   data={
     Object {
       "2018-10-13": Object {
-        "9": Object {
+        "09": Object {
           "end_date": "2018-10-12T16:00:00.000Z",
           "start_date": "2018-10-12T15:00:00.000Z",
           "title": "title",
@@ -239,7 +239,7 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
       data={
         Object {
           "2018-10-13": Object {
-            "9": Object {
+            "09": Object {
               "end_date": "2018-10-12T16:00:00.000Z",
               "start_date": "2018-10-12T15:00:00.000Z",
               "title": "title",
@@ -815,16 +815,18 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               13
             </div>
             <EventBlock
+              className="primary"
+              fluid={false}
               key="0"
               onToggle={[Function]}
             >
               <button
-                className="event-block btn"
+                className="event-block btn primary"
                 onClick={[Function]}
                 type="button"
               >
                 ○ 
-                9:00 title
+                09:00 title
               </button>
             </EventBlock>
           </div>

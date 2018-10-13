@@ -23,6 +23,7 @@
   flex-direction: column;
 
   text-align: left;
+  min-width: 0;
 }
 
 .calendar .cal-block {
@@ -57,16 +58,37 @@
 }
 
 .calendar .event-block {
+  padding: 5px;
+
   font-size: 12px;
   text-align: left;
-  padding: 5px;
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.calendar .event-block:hover {
-  color: white;
+.calendar .event-block.primary {
+  border: none;
+}
+
+.calendar .event-block.secondary:hover {
   background: $secondary-color;
+  color: white;
+}
+
+.calendar .event-block.fluid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.calendar .event-block > * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

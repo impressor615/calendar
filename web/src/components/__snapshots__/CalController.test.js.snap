@@ -2,6 +2,7 @@
 
 exports[`<CalController /> should be matched with the snapshot 1`] = `
 <CalController
+  currentDate={"2018-10-12T15:00:00.000Z"}
   onArrowClick={
     [MockFunction] {
       "calls": Array [
@@ -28,7 +29,6 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
       ],
     }
   }
-  title="title"
   type="months"
 >
   <article
@@ -61,7 +61,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
         <div
           className="title"
         >
-          title
+          2018년 10월
         </div>
         <button
           className="btn arrow right"

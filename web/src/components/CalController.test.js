@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import CalController from 'components/CalController';
 
@@ -6,8 +7,9 @@ import CalController from 'components/CalController';
 describe('<CalController />', () => {
   const onArrowClick = jest.fn();
   const onTypeClick = jest.fn();
+  const defaultDate = moment('2018-10-13');
   const props = {
-    title: 'title',
+    currentDate: defaultDate,
     type: 'months',
     onArrowClick,
     onTypeClick,

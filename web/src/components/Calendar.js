@@ -1,19 +1,36 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import { eventBind } from 'utils/eventUtils';
 import CONSTANTS from '../constants';
 
 
-export const EventBlock = ({ children, onToggle }) => (
+export const EventBlock = ({
+  children,
+  onToggle,
+  fluid,
+  ...rest
+}) => (
   <button
+    {...rest}
     type="button"
-    className="event-block btn"
     onClick={onToggle}
+    className={classnames('event-block btn', rest.className, { fluid })}
   >
     {children}
   </button>
 );
+
+EventBlock.defaultProps = {
+  fluid: false,
+};
+
+EventBlock.propTypes = {
+  children: PropTypes.node.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  fluid: PropTypes.bool,
+}
 
 const { DAY, HOURS } = CONSTANTS;
 export const CalendarDay = ({
@@ -63,6 +80,7 @@ export const MonthCalendar = ({ range, onToggle, currentDate, data }) => (
                       Object.entries(events).map(([key, event], index) => (
                         <EventBlock
                           key={index.toString()}
+                          className="primary"
                           onToggle={eventBind(onToggle, { type: 'event', dateObj: event })}
                         >
                           &#9675; {`${key}:00 ${event.title}`}
@@ -80,12 +98,12 @@ export const MonthCalendar = ({ range, onToggle, currentDate, data }) => (
 );
 
 export const CalendarTime = ({ children, onToggle }) => (
-  <button className="cal-block sm" onClick={onToggle}>
+  <div className="cal-block sm" onClick={onToggle}>
     {children}
-  </button>
+  </div>
 );
 
-export const WeekCalendar = ({ range, onToggle, currentDate }) => (
+export const WeekCalendar = ({ range, onToggle, currentDate, data }) => (
   <section className="week-calendar">
     <div className="cal-block sm" />
     {
@@ -111,12 +129,32 @@ export const WeekCalendar = ({ range, onToggle, currentDate }) => (
             <span className="hour">{hourObj.text}</span>
           </div>
           {
-            range.map((dateObj, index) => (
-              <CalendarTime
-                key={index.toString()}
-                onToggle={eventBind(onToggle, { type: 'week', hour: hourObj.code, dateObj })}
-              />
-            ))
+            range.map((dateObj, index) => {
+              const dataKey = dateObj.moment.format('YYYY-MM-DD');
+              const events = data[dataKey];
+              const { code, text } = hourObj;
+              return (
+                <CalendarTime
+                  key={index.toString()}
+                  onToggle={eventBind(onToggle, { type: 'week', hour: code, dateObj })}
+                >
+                  {
+                    events && events[code]
+                      ? (
+                        <EventBlock
+                          fluid
+                          className="secondary"
+                          key={index.toString()}
+                          onToggle={eventBind(onToggle, { type: 'event', dateObj: events[code] })}
+                        >
+                          <div>{events[code].title}</div>
+                          <div>{ text || '오전 00시' }</div>
+                        </EventBlock>
+                      ) : null
+                  }
+                </CalendarTime>
+              );
+            })
           }
         </Fragment>
       ))
