@@ -5,6 +5,7 @@ import axios from 'axios';
 import CalController from 'components/CalController';
 import Calendar from 'components/Calendar';
 import CalModal from 'components/CalModal';
+import Loading from 'components/Loading';
 import { monthRanges, weekRanges } from 'utils/dateUtils';
 
 import CONSTANTS from './constants';
@@ -22,6 +23,7 @@ class App extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     const defaultDate = moment().startOf('month');
     this.state = {
+      isLoading: false,
       date: defaultDate,
       type: 'month',
       range: monthRanges(defaultDate),
@@ -181,8 +183,10 @@ class App extends Component {
       start_date: start_date.toISOString(),
       end_date: end_date.toISOString(),
     };
+    this.setLoading();
     axios.post('/api/calendar', postData)
     .then(() => {
+      this.setLoading();
       const newCalendar = { ...calendar };
       const dateKey = start_date.format('YYYY-MM-DD');
       const hourKey = start_date.hour();
@@ -196,8 +200,16 @@ class App extends Component {
       };
       this.setState({ calendar: newCalendar, isOpen: false });
     }, (error) => {
+      this.setLoading();
       // TODO: notification comes here
       console.log(error);
+    });
+  }
+
+  setLoading() {
+    const { isLoading } = this.state;
+    this.setState({
+      isLoading: !isLoading,
     });
   }
 
@@ -209,6 +221,7 @@ class App extends Component {
       isOpen,
       event,
       calendar,
+      isLoading,
     } = this.state;
     const title = date.format('YYYY년 MM월');
     return (
@@ -228,12 +241,14 @@ class App extends Component {
         />
         <CalModal
           isOpen={isOpen}
+          isLoading={isLoading}
           onToggle={this.onToggle}
           onChange={this.onTitleChange}
           onDateChange={this.onDateChange}
           onSubmit={this.onSubmit}
           event={event}
         />
+        <Loading isOpen={isLoading} />
       </section>
     );
   }

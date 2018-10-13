@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> shoud be matched with the snapshot 1`] = `
+<Loading
+  isOpen={true}
+>
+  <Modal
+    isOpen={true}
+  >
+    <Portal
+      containerInfo={
+        <div
+          id="modal-root"
+        >
+          <div
+            class="modal"
+          >
+            <div
+              class="modal-dialog center"
+            >
+              Loading...
+            </div>
+            <div
+              class="modal-backdrop"
+            />
+          </div>
+        </div>
+      }
+    >
+      <div
+        className="modal"
+      >
+        <ModalDialog
+          className="center"
+        >
+          <div
+            className="modal-dialog center"
+          >
+            Loading...
+          </div>
+        </ModalDialog>
+        <div
+          className="modal-backdrop"
+        />
+      </div>
+    </Portal>
+  </Modal>
+</Loading>
+`;
