@@ -10,6 +10,7 @@ module.exports = {
     const message = error[language] || error.en;
     return res.status(status).json({
       type: 'error',
+      code: error.code,
       message,
     });
   },
