@@ -2,6 +2,7 @@
 
 exports[`<CalModal /> should be matched with the snapshot 1`] = `
 <Modal
+  backdrop={true}
   className="cal-modal"
   isOpen={false}
 >

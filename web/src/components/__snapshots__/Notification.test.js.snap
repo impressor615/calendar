@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notification /> shoud be matched with the snapshot 1`] = `
+<Notification
+  isOpen={true}
+  message="error occurred"
+  onToggle={[MockFunction]}
+  type="danger"
+>
+  <Modal
+    backdrop={false}
+    className="notification"
+    isOpen={true}
+  >
+    <Portal
+      containerInfo={
+        <div
+          id="modal-root"
+        >
+          <div
+            class="modal notification"
+          >
+            <div
+              class="modal-dialog danger"
+            >
+              <div
+                class="modal-body"
+              >
+                <div>
+                  error occurred
+                </div>
+                <button
+                  class="btn"
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div
+        className="modal notification"
+      >
+        <ModalDialog
+          className="danger"
+        >
+          <div
+            className="modal-dialog danger"
+          >
+            <ModalBody>
+              <div
+                className="modal-body"
+              >
+                <div>
+                  error occurred
+                </div>
+                <button
+                  className="btn"
+                  onClick={[MockFunction]}
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+            </ModalBody>
+          </div>
+        </ModalDialog>
+      </div>
+    </Portal>
+  </Modal>
+</Notification>
+`;

@@ -6,11 +6,13 @@ import CalController from 'components/CalController';
 import Calendar from 'components/Calendar';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
+import Notification from 'components/Notification';
 import { monthRange, weekRange } from 'utils/dateUtils';
+import { getErrorMsg } from 'utils/errorUtils';
 
 import CONSTANTS from './constants';
 
-const { MOMENTS } = CONSTANTS;
+const { MOMENTS, NOTIFICATION } = CONSTANTS;
 const fetchEvents = (startDate, endDate) => {
   const start_date = startDate.toISOString();
   const end_date = endDate.toISOString();
@@ -31,22 +33,28 @@ class App extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrop = this.onDrop.bind(this);
+    this.onToggleMsg = this.onToggleMsg.bind(this);
     const defaultDate = moment().startOf('month');
     const { start_date, end_date, items } = monthRange(defaultDate);
     this.state = {
+      isOpen: false,
       isLoading: false,
-      date: defaultDate,
       type: 'month',
+      date: defaultDate,
       start_date,
       end_date,
       range: items,
-      isOpen: false,
       calendar: [],
       event: {
         _id: '',
         title: '',
         start_date: defaultDate,
         end_date: moment(defaultDate).add(1, 'hours'),
+      },
+      message: {
+        isOpen: true,
+        message: 'message',
+        type: 'danger',
       },
     };
   }
@@ -76,6 +84,12 @@ class App extends Component {
           calendar: result,
         });
       });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.closeMsg) {
+      clearTimeout(this.closeMsg);
     }
   }
 
@@ -205,12 +219,16 @@ class App extends Component {
             ...event,
             _id: '',
             title: '',
-          }
+          },
+        });
+        this.notify({
+          type: 'success',
+          message: NOTIFICATION.update,
         });
       }, (error) => {
-        // TODO: error notification comes here!
         this.setLoading();
-        console.log('error: ', error);
+        const message = getErrorMsg(error)
+        this.notify({ message });
       });
   }
 
@@ -237,12 +255,14 @@ class App extends Component {
         }
       });
 
-      // TODO: notification comes here
+      this.notify({
+        type: 'success',
+        message: NOTIFICATION.delete,
+      });
     }, (error) => {
       this.setLoading();
-
-      // TODO: error comes here
-      console.log(error);
+      const message = getErrorMsg(error);
+      this.notify({ message });
     })
   }
 
@@ -275,10 +295,14 @@ class App extends Component {
           title: '',
         }
       });
+      this.notify({
+        type: 'success',
+        message: NOTIFICATION.create,
+      });
     }, (error) => {
       this.setLoading();
-      // TODO: notification comes here
-      console.log(error);
+      const message = getErrorMsg(error);
+      this.notify({ message });
     });
   }
 
@@ -324,11 +348,26 @@ class App extends Component {
         putData._id = _id
         newCalendar.push(putData);
         this.setState({ calendar: newCalendar });
+        this.notify({
+          type: 'success',
+          message: NOTIFICATION.update,
+        });
       }, (error) => {
-        // TODO: error notification comes here!
         this.setLoading();
-        console.log('error: ', error);
+        const message = getErrorMsg(error);
+        this.notify({ message });
       });
+  }
+
+  onToggleMsg(e, props) {
+    const { message } = this.state;
+    const { isOpen } = message;
+    this.setState({
+      message: {
+        ...message,
+        isOpen: !isOpen,
+      },
+    });
   }
 
   setLoading() {
@@ -353,6 +392,20 @@ class App extends Component {
     });
   }
 
+  notify(data) {
+    const { message } = this.state;
+    this.setState({
+      message: {
+        ...message,
+        isOpen: true,
+        type: data.type,
+        message: data.message,
+      },
+    });
+
+    this.closeMsg = setTimeout(this.onToggleMsg, 1000);
+  }
+
   render() {
     const {
       type,
@@ -362,6 +415,7 @@ class App extends Component {
       event,
       calendar,
       isLoading,
+      message,
     } = this.state;
     return (
       <section className="container">
@@ -392,6 +446,7 @@ class App extends Component {
           event={event}
         />
         <Loading isOpen={isLoading} />
+        <Notification onToggle={this.onToggleMsg} {...message} />
       </section>
     );
   }

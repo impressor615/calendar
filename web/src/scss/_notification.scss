@@ -1,0 +1,35 @@
+.notification {
+  top: calc(100vh - 90px);
+  left: calc(100vw - 400px);
+
+  .modal-dialog {
+    margin: auto;
+    min-width: 300px;
+
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+
+    color: white;
+  }
+
+  .modal-dialog.danger {
+    background: $danger;
+  }
+
+  .modal-dialog.success {
+    background: $success;
+  }
+
+  .modal-body {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  button {
+    color: white;
+    font-size: 25px;
+  }
+}

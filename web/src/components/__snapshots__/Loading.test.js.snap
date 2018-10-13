@@ -5,6 +5,7 @@ exports[`<Loading /> shoud be matched with the snapshot 1`] = `
   isOpen={true}
 >
   <Modal
+    backdrop={true}
     isOpen={true}
   >
     <Portal

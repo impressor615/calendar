@@ -101,5 +101,20 @@ export default {
       text: '오후 11시',
       code: '23',
     },
-  ]
+  ],
+  ERRORS: {
+    '401': {
+      ko: '유효하지 않은 요청 데이터입니다.',
+      en: 'invalid route data',
+    },
+    '402': {
+      ko: '중복된 일정이 존재합니다.',
+      en: 'duplicate calendar event exsists',
+    }
+  },
+  NOTIFICATION: {
+    'update': '일정 업데이트가 완료되었습니다.',
+    'delete': '일정 삭제가 완료되었습니다.',
+    'create': '일정 생성이 완료되었습니다.',
+  },
 };
