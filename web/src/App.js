@@ -6,7 +6,7 @@ import CalController from 'components/CalController';
 import Calendar from 'components/Calendar';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
-import { monthRange, weekRange, getHourKey } from 'utils/dateUtils';
+import { monthRange, weekRange } from 'utils/dateUtils';
 
 import CONSTANTS from './constants';
 
@@ -15,25 +15,7 @@ const fetchEvents = (startDate, endDate) => {
   const start_date = startDate.toISOString();
   const end_date = endDate.toISOString();
   return axios.get('/api/calendar', { params: { start_date, end_date }})
-    .then((res) => {
-      const { data } = res;
-      return data.reduce((current, next) => {
-        const { _id, start_date, end_date, title } = next;
-        const momentObj = moment(start_date);
-        const dateKey = momentObj.format('YYYY-MM-DD');
-        const hourKey = getHourKey(momentObj.hour());
-        current[dateKey] = {
-          ...current[dateKey],
-          [hourKey]: {
-            _id,
-            title,
-            start_date,
-            end_date,
-          }
-        };
-        return current;
-      }, {});
-    });
+    .then(res => res.data)
 };
 
 class App extends Component {
@@ -56,7 +38,7 @@ class App extends Component {
       end_date,
       range: items,
       isOpen: false,
-      calendar: {},
+      calendar: [],
       event: {
         _id: '',
         title: '',
@@ -195,7 +177,7 @@ class App extends Component {
   onDelete(e) {
     e.preventDefault();
     const { event, calendar } = this.state;
-    const { _id, start_date } = event;
+    const { _id } = event;
     if (!_id) {
       return;
     }
@@ -204,10 +186,7 @@ class App extends Component {
     axios.delete(`/api/calendar/${_id}`)
     .then(() => {
       this.setLoading();
-      const dateKey = start_date.format('YYYY-MM-DD');
-      const hourKey = getHourKey(start_date.hour());
-      const newCalendar = { ...calendar };
-      delete newCalendar[dateKey][hourKey];
+      const newCalendar = [ ...calendar ].filter(item => item._id !== _id);
       this.setState({
         calendar: newCalendar,
         isOpen: false,
@@ -227,6 +206,7 @@ class App extends Component {
     })
   }
 
+  // TODO: should return _id
   onSubmit(e) {
     e.preventDefault();
     const { event, calendar } = this.state;
@@ -240,17 +220,8 @@ class App extends Component {
     axios.post('/api/calendar', postData)
     .then(() => {
       this.setLoading();
-      const newCalendar = { ...calendar };
-      const dateKey = start_date.format('YYYY-MM-DD');
-      const hourKey = getHourKey(start_date.hour());
-      newCalendar[dateKey] = {
-        ...newCalendar[dateKey],
-        [hourKey]: {
-          title,
-          start_date,
-          end_date,
-        }
-      };
+      const newCalendar = [...calendar];
+      newCalendar.push({ title, start_date, end_date })
       this.setState({
         calendar: newCalendar,
         isOpen: false,

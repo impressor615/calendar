@@ -22,15 +22,13 @@ describe('<Calendar />', () => {
     currentDate,
     range: mRange.items,
     onToggle,
-    data: {
-      '2018-10-13': {
-        '09': {
-          title: 'title',
-          start_date: moment(currentDate).toISOString(),
-          end_date: moment(currentDate).add(1, 'hours').toISOString(),
-        },
+    data: [
+      {
+        title: 'title',
+        start_date: moment(currentDate).toISOString(),
+        end_date: moment(currentDate).add(1, 'hours').toISOString(),
       },
-    },
+    ],
   }
 
   afterEach(() => {

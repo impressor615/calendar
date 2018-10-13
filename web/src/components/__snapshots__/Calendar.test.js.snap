@@ -4,15 +4,13 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
 <Calendar
   currentDate={"2018-10-12T15:00:00.000Z"}
   data={
-    Object {
-      "2018-10-13": Object {
-        "09": Object {
-          "end_date": "2018-10-12T16:00:00.000Z",
-          "start_date": "2018-10-12T15:00:00.000Z",
-          "title": "title",
-        },
+    Array [
+      Object {
+        "end_date": "2018-10-12T16:00:00.000Z",
+        "start_date": "2018-10-12T15:00:00.000Z",
+        "title": "title",
       },
-    }
+    ]
   }
   onToggle={[MockFunction]}
   range={
@@ -237,15 +235,13 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
     <MonthCalendar
       currentDate={"2018-10-12T15:00:00.000Z"}
       data={
-        Object {
-          "2018-10-13": Object {
-            "09": Object {
-              "end_date": "2018-10-12T16:00:00.000Z",
-              "start_date": "2018-10-12T15:00:00.000Z",
-              "title": "title",
-            },
+        Array [
+          Object {
+            "end_date": "2018-10-12T16:00:00.000Z",
+            "start_date": "2018-10-12T15:00:00.000Z",
+            "title": "title",
           },
-        }
+        ]
       }
       onToggle={[MockFunction]}
       range={
@@ -826,7 +822,7 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
                 type="button"
               >
                 ○ 
-                09:00 title
+                00:00 title
               </button>
             </EventBlock>
           </div>
