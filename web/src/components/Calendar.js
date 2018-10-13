@@ -5,27 +5,28 @@ import CONSTANTS from '../constants';
 
 
 const { DAY, HOURS } = CONSTANTS;
-const CalendarDay = ({
+export const CalendarDay = ({
   day,
   date,
   children,
+  onToggle,
 }) => (
-  <button className="cal-block">
+  <button className="cal-block" onClick={onToggle}>
     { day ? <div className="day">{day}</div> : null}
     <div>{date}</div>
     {children}
   </button>
 );
 
-const MonthCalendar = ({ range }) => (
+export const MonthCalendar = ({ range, onToggle }) => (
   <section className="month-calendar">
     {
       range.map((date, index) => (
         <Fragment key={index.toString()}>
           {
             index <= 6
-              ? <CalendarDay date={date} day={DAY[index]} />
-              : <CalendarDay date={date} />
+              ? <CalendarDay date={date} day={DAY[index]} onToggle={onToggle} />
+              : <CalendarDay date={date} onToggle={onToggle} />
           }
         </Fragment>
       ))
@@ -33,13 +34,13 @@ const MonthCalendar = ({ range }) => (
   </section>
 );
 
-const CalendarTime = ({ children }) => (
-  <button className="cal-block sm">
+export const CalendarTime = ({ children, onToggle }) => (
+  <button className="cal-block sm" onClick={onToggle}>
     {children}
   </button>
 );
 
-const WeekCalendar = ({ range }) => (
+export const WeekCalendar = ({ range, onToggle }) => (
   <section className="week-calendar">
     <div className="cal-block sm" />
     {
@@ -58,7 +59,7 @@ const WeekCalendar = ({ range }) => (
           </div>
           {
             range.map((date, index) => (
-              <CalendarTime key={index.toString()} />
+              <CalendarTime key={index.toString()} onToggle={onToggle} />
             ))
           }
         </Fragment>
@@ -67,12 +68,12 @@ const WeekCalendar = ({ range }) => (
   </section>
 );
 
-const Calendar = ({ type, range }) => (
+const Calendar = ({ type, range, onToggle }) => (
   <article className="calendar">
     {
       type === 'month'
-        ? <MonthCalendar range={range} />
-        : <WeekCalendar range={range} />
+        ? <MonthCalendar range={range} onToggle={onToggle} />
+        : <WeekCalendar range={range} onToggle={onToggle} />
     }
   </article>
 );
@@ -80,6 +81,7 @@ const Calendar = ({ type, range }) => (
 Calendar.propTypes = {
   type: PropTypes.string.isRequired,
   range: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default Calendar;
