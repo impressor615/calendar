@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import Button from 'components/Button';
 import Modal, { ModalDialog, ModalBody } from 'components/Modal';
 
 
@@ -16,13 +17,7 @@ const Notification = ({ type, isOpen, message, onToggle }) => (
     >
       <ModalBody>
         <div>{ message }</div>
-        <button
-          type="button"
-          onClick={onToggle}
-          className="btn"
-        >
-          &times;
-        </button>
+        <Button onClick={onToggle}>&times;</Button>
       </ModalBody>
     </ModalDialog>
   </Modal>

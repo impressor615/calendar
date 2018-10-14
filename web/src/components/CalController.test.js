@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import Arrow from 'components/Arrow';
+import Button from 'components/Button';
 import CalController from 'components/CalController';
 
 
@@ -27,13 +28,13 @@ describe('<CalController />', () => {
     expect(wrapper.find(Arrow)).toHaveLength(2);
     expect(wrapper.find('.date-control .title')).toHaveLength(1);
     expect(wrapper.find('.type-control')).toHaveLength(1);
-    expect(wrapper.find('.type-control > button')).toHaveLength(2);
+    expect(wrapper.find(Button)).toHaveLength(2);
   });
 
   it('onClick event should be fired when button is clicked', () => {
     const wrapper = shallow(<CalController {...props} />);
     wrapper.find(Arrow).first().simulate('click');
-    wrapper.find('.btn.primary').first().simulate('click');
+    wrapper.find(Button).first().simulate('click');
 
     expect(onArrowClick).toHaveBeenCalledTimes(1);
     expect(onTypeChange).toHaveBeenCalledTimes(1);

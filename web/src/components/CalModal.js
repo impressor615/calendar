@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Modal, { ModalDialog, ModalHeader, ModalBody, ModalFooter } from 'components/Modal';
 import DateRange from 'components/DateRange';
+import Button from 'components/Button';
 
 
 const CalModal = ({
@@ -45,26 +46,9 @@ const CalModal = ({
             />
           </ModalBody>
           <ModalFooter>
-            <button
-              onClick={onToggle}
-              className="close-btn btn primary"
-            >
-              취소
-            </button>
-            {
-              event._id ? (
-                <button onClick={onDelete} className="delete-btn btn primary">
-                  삭제
-                </button>
-              ) : null
-            }
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="submit-btn btn secondary"
-            >
-              저장
-            </button>
+            <Button onClick={onToggle} className="close-btn" color="primary">취소</Button>
+            { event._id ? <Button onClick={onDelete} className="delete-btn" color="primary">삭제</Button> : null }
+            <Button type="submit" disabled={isLoading} className="submit-btn" color="secondary">저장</Button>
           </ModalFooter>
         </form>
       </ModalDialog>

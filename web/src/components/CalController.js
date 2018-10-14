@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import Arrow from 'components/Arrow';
+import Button from 'components/Button';
 import { getCalendarTitle } from 'utils/dateUtils';
 
 
@@ -20,22 +20,8 @@ const CalController = ({
         <Arrow name="next" direction="next" onClick={onArrowClick} />
       </section>
       <section className="type-control">
-        <button
-          name="month"
-          type="button"
-          onClick={onTypeChange}
-          className={classnames('btn primary', { active: type === 'month'})}
-        >
-          월
-        </button>
-        <button
-          name="week"
-          type="button"
-          onClick={onTypeChange}
-          className={classnames('btn primary', { active: type === 'week'})}
-        >
-          주
-        </button>
+        <Button name="month" onClick={onTypeChange} color="primary" active={type === 'month'}>월</Button>
+        <Button name="week" onClick={onTypeChange} color="primary" active={type === 'week'}>주</Button>
       </section>
     </div>
   </article>

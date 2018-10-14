@@ -80,8 +80,10 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
         />
       </ModalBody>
       <ModalFooter>
-        <button
-          className="close-btn btn primary"
+        <Button
+          active={false}
+          className="close-btn"
+          color="primary"
           onClick={
             [MockFunction] {
               "calls": Array [
@@ -97,14 +99,17 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
           }
         >
           취소
-        </button>
-        <button
-          className="submit-btn btn secondary"
+        </Button>
+        <Button
+          active={false}
+          className="submit-btn"
+          color="secondary"
           disabled={false}
+          onClick={[Function]}
           type="submit"
         >
           저장
-        </button>
+        </Button>
       </ModalFooter>
     </form>
   </ModalDialog>

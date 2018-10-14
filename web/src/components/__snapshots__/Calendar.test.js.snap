@@ -870,16 +870,24 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
               onDragStart={[Function]}
               onToggle={[Function]}
             >
-              <button
-                className="event-block btn primary"
+              <Button
+                active={false}
+                className="event-block primary"
+                color=""
                 draggable={true}
                 onClick={[Function]}
                 onDragStart={[Function]}
-                type="button"
               >
-                ○ 
-                00:00 title
-              </button>
+                <button
+                  className="btn event-block primary"
+                  draggable={true}
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                >
+                  ○ 
+                  00:00 title
+                </button>
+              </Button>
             </EventBlock>
           </div>
         </CalendarDay>

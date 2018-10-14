@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import moment from 'moment';
 
+import Button from 'components/Button';
 import { getHourKey } from 'utils/dateUtils';
 import { eventBind } from 'utils/eventUtils';
 import CONSTANTS from '../constants';
@@ -16,16 +17,19 @@ export const EventBlock = ({
   fluid,
   ...rest
 }) => (
-  <button
-    draggable
+  <Button
     {...rest}
-    type="button"
+    draggable
     onClick={onToggle}
     onDragStart={onDragStart}
-    className={classnames('event-block btn', rest.className, { fluid })}
+    className={classnames(
+      'event-block',
+      rest.className,
+      { fluid },
+    )}
   >
-    {children}
-  </button>
+    { children }
+  </Button>
 );
 
 EventBlock.defaultProps = {

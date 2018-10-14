@@ -3,18 +3,12 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import Button from 'components/Button';
+
 export const ModalHeader = ({ children, onToggle }) => (
   <div className="modal-header">
-    <div>
-      {children}
-    </div>
-    <button
-      className="btn"
-      type="button"
-      onClick={onToggle}
-    >
-      &times;
-    </button>
+    <div>{children}</div>
+    <Button onClick={onToggle}>&times;</Button>
   </div>
 );
 

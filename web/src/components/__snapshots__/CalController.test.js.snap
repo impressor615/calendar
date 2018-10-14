@@ -117,8 +117,9 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
       <section
         className="type-control"
       >
-        <button
-          className="btn primary"
+        <Button
+          active={false}
+          color="primary"
           name="month"
           onClick={
             [MockFunction] {
@@ -133,12 +134,30 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
               ],
             }
           }
-          type="button"
         >
-          월
-        </button>
-        <button
-          className="btn primary"
+          <button
+            className="btn primary"
+            name="month"
+            onClick={
+              [MockFunction] {
+                "calls": Array [
+                  Array [],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+          >
+            월
+          </button>
+        </Button>
+        <Button
+          active={false}
+          color="primary"
           name="week"
           onClick={
             [MockFunction] {
@@ -153,10 +172,27 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
               ],
             }
           }
-          type="button"
         >
-          주
-        </button>
+          <button
+            className="btn primary"
+            name="week"
+            onClick={
+              [MockFunction] {
+                "calls": Array [
+                  Array [],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+          >
+            주
+          </button>
+        </Button>
       </section>
     </div>
   </article>

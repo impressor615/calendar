@@ -32,7 +32,6 @@ exports[`<Notification /> shoud be matched with the snapshot 1`] = `
                 </div>
                 <button
                   class="btn"
-                  type="button"
                 >
                   ×
                 </button>
@@ -58,13 +57,18 @@ exports[`<Notification /> shoud be matched with the snapshot 1`] = `
                 <div>
                   error occurred
                 </div>
-                <button
-                  className="btn"
+                <Button
+                  active={false}
+                  color=""
                   onClick={[MockFunction]}
-                  type="button"
                 >
-                  ×
-                </button>
+                  <button
+                    className="btn"
+                    onClick={[MockFunction]}
+                  >
+                    ×
+                  </button>
+                </Button>
               </div>
             </ModalBody>
           </div>
