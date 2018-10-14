@@ -690,6 +690,7 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
                     draggable={true}
                     onClick={[Function]}
                     onDragStart={[Function]}
+                    type="button"
                   >
                     ○ 
                     00:00 title

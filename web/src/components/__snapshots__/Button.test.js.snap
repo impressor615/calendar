@@ -16,6 +16,7 @@ exports[`<Button /> should be matched with the snapshot 1`] = `
       ],
     }
   }
+  type="button"
 >
   button
 </button>

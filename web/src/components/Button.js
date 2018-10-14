@@ -5,8 +5,9 @@ import classnames from 'classnames';
 
 const Button = ({ children, color, onClick, active, ...rest }) => (
   <button
-    {...rest}
+    type="button"
     onClick={onClick}
+    {...rest}
     className={classnames(
       'btn',
       rest.className,

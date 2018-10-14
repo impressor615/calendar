@@ -151,6 +151,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
                 ],
               }
             }
+            type="button"
           >
             월
           </button>
@@ -189,6 +190,7 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
                 ],
               }
             }
+            type="button"
           >
             주
           </button>
