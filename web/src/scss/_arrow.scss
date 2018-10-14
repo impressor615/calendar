@@ -1,0 +1,19 @@
+.arrow {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.arrow {
+  width: 0px;
+  height: 0px;
+  border: 15px solid transparent;
+}
+
+.arrow.previous {
+  border-right-color: $secondary-color;
+}
+
+.arrow.next {
+  border-left-color: $secondary-color;
+}
