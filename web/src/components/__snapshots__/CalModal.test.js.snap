@@ -1,10 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CalModal /> should be matched with the snapshot 1`] = `
-<Modal
-  backdrop={true}
-  className="cal-modal"
+<CalModal
+  event={
+    Object {
+      "_id": "",
+      "end_date": "2018-10-12T16:00:00.000Z",
+      "start_date": "2018-10-12T15:00:00.000Z",
+      "title": "title",
+    }
+  }
+  events={Array []}
+  isLoading={false}
   isOpen={false}
+  notify={[MockFunction]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  onDateChange={[MockFunction]}
   onToggle={
     [MockFunction] {
       "calls": Array [
@@ -18,100 +41,26 @@ exports[`<CalModal /> should be matched with the snapshot 1`] = `
       ],
     }
   }
+  setLoading={[MockFunction]}
+  updateEvents={[MockFunction]}
 >
-  <ModalDialog>
-    <ModalHeader
-      onToggle={
-        [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-          "results": Array [
-            Object {
-              "isThrow": false,
-              "value": undefined,
-            },
-          ],
-        }
+  <Modal
+    backdrop={true}
+    className="cal-modal"
+    isOpen={false}
+    onToggle={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
       }
-    >
-      일정 추가 및 변경
-    </ModalHeader>
-    <form
-      onSubmit={
-        [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-          "results": Array [
-            Object {
-              "isThrow": false,
-              "value": undefined,
-            },
-          ],
-        }
-      }
-    >
-      <ModalBody>
-        <input
-          id="title"
-          onChange={
-            [MockFunction] {
-              "calls": Array [
-                Array [],
-              ],
-              "results": Array [
-                Object {
-                  "isThrow": false,
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          placeholder="일정 제목을 입력해주세요!"
-          required={true}
-          type="text"
-          value="title"
-        />
-        <DateRange
-          endDate={"2018-10-12T16:00:00.000Z"}
-          onChange={[MockFunction]}
-          startDate={"2018-10-12T15:00:00.000Z"}
-        />
-      </ModalBody>
-      <ModalFooter>
-        <Button
-          active={false}
-          className="close-btn"
-          color="primary"
-          onClick={
-            [MockFunction] {
-              "calls": Array [
-                Array [],
-              ],
-              "results": Array [
-                Object {
-                  "isThrow": false,
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-        >
-          취소
-        </Button>
-        <Button
-          active={false}
-          className="submit-btn"
-          color="secondary"
-          disabled={false}
-          onClick={[Function]}
-          type="submit"
-        >
-          저장
-        </Button>
-      </ModalFooter>
-    </form>
-  </ModalDialog>
-</Modal>
+    }
+  />
+</CalModal>
 `;

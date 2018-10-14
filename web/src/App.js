@@ -5,15 +5,13 @@ import CalController from 'components/CalController';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
 import Notification from 'components/Notification';
-import { getErrorMsg } from 'utils/errorUtils';
-import { authAxios } from 'utils/fetchUtils';
 
 import { AppContext } from './AppContext';
 import Calendar from './Calendar';
 import CONSTANTS from './constants';
 
 
-const { MOMENTS, NOTIFICATION } = CONSTANTS;
+const { MOMENTS } = CONSTANTS;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,9 +20,6 @@ class App extends Component {
     this.onToggle = this.onToggle.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
-    this.onDelete = this.onDelete.bind(this);
-    this.onUpdate = this.onUpdate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
     this.onToggleMsg = this.onToggleMsg.bind(this);
     this.updateEvents = this.updateEvents.bind(this);
     this.setLoading = this.setLoading.bind(this);
@@ -144,120 +139,6 @@ class App extends Component {
     });
   }
 
-  onUpdate(e) {
-    e.preventDefault();
-    const { event, events } = this.state;
-    const { _id, title, start_date, end_date } = event;
-    if(!_id || !title || !start_date || !end_date) {
-      return;
-    }
-
-    const putData = {
-      title,
-      start_date: start_date.toISOString(),
-      end_date: end_date.toISOString(),
-    };
-    this.setLoading();
-    authAxios.put(`/api/calendar/${_id}`, putData)
-      .then(() => {
-        this.setLoading();
-        const newEvents = [...events].filter(item => item._id !== _id);
-        putData._id = _id;
-        newEvents.push(putData);
-        this.setState({
-          events: newEvents,
-          isOpen: false,
-          event: {
-            ...event,
-            _id: '',
-            title: '',
-          },
-        });
-        this.notify({
-          type: 'success',
-          message: NOTIFICATION.update,
-        });
-      }, (error) => {
-        this.setLoading();
-        const message = getErrorMsg(error)
-        this.notify({ message });
-      });
-  }
-
-  onDelete(e) {
-    e.preventDefault();
-    const { event, events } = this.state;
-    const { _id } = event;
-    if (!_id) {
-      return;
-    }
-
-    this.setLoading();
-    authAxios.delete(`/api/calendar/${_id}`)
-    .then(() => {
-      this.setLoading();
-      const newEvents = [...events].filter(item => item._id !== _id);
-      this.setState({
-        events: newEvents,
-        isOpen: false,
-        event: {
-          ...event,
-          _id: '',
-          title: '',
-        }
-      });
-
-      this.notify({
-        type: 'success',
-        message: NOTIFICATION.delete,
-      });
-    }, (error) => {
-      this.setLoading();
-      const message = getErrorMsg(error);
-      this.notify({ message });
-    })
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    const { event, events } = this.state;
-    const { title, start_date, end_date } = event;
-    const postData = {
-      title,
-      start_date: start_date.toISOString(),
-      end_date: end_date.toISOString(),
-    };
-    this.setLoading();
-    authAxios.post('/api/calendar', postData)
-    .then((res) => {
-      this.setLoading();
-      const newEvents = [...events];
-      newEvents.push({
-        _id: res.data._id,
-        title,
-        start_date,
-        end_date,
-      });
-      this.setState({
-        events: newEvents,
-        isOpen: false,
-        event: {
-          ...event,
-          _id: '',
-          title: '',
-        }
-      });
-      this.notify({
-        type: 'success',
-        message: NOTIFICATION.create,
-      });
-    }, (error) => {
-      this.setLoading();
-      const message = getErrorMsg(error);
-      this.notify({ message });
-    });
-  }
-
   onToggleMsg() {
     const { message } = this.state;
     const { isOpen } = message;
@@ -304,6 +185,8 @@ class App extends Component {
       <AppContext.Provider value={{
         type,
         events,
+        isOpen,
+        isLoading,
         currentDate: date,
         setLoading: this.setLoading,
         onToggle: this.onToggle,
@@ -317,15 +200,10 @@ class App extends Component {
           />
           <Calendar />
           <CalModal
-            isOpen={isOpen}
-            isLoading={isLoading}
-            onToggle={this.onToggle}
             onChange={this.onTitleChange}
             onDateChange={this.onDateChange}
-            onUpdate={this.onUpdate}
-            onDelete={this.onDelete}
-            onSubmit={this.onSubmit}
             event={event}
+            onSubmit={this.onSubmit}
           />
           <Loading isOpen={isLoading} />
           <Notification onToggle={this.onToggleMsg} {...message} />

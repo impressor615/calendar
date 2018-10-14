@@ -6,6 +6,8 @@ export const AppContext = React.createContext({
   type: 'month',
   currentDate: initialDate,
   events: [],
+  isOpen: false,
+  isLoading: false,
   setLoading: () => {},
   onToggle: () => {},
   notify: () => {},

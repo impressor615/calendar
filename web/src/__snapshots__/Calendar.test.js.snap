@@ -28,6 +28,8 @@ exports[`<Calendar /> should be matched with the snapshot 1`] = `
         },
       ]
     }
+    isLoading={false}
+    isOpen={false}
     notify={[Function]}
     onDragStart={[MockFunction]}
     onDrop={[MockFunction]}
