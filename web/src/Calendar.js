@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import { MonthCalendar, WeekCalendar } from 'components/Calendar';
+import MonthCalendar from 'components/MonthCalendar';
+import WeekCalendar from 'components/WeekCalendar';
 import { monthRange, weekRange } from 'utils/dateUtils';
 import { fetchEvents, updateServerEvent } from 'utils/fetchUtils';
 import { getErrorMsg } from 'utils/errorUtils';

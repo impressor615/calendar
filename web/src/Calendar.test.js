@@ -2,13 +2,9 @@ import React from 'react';
 import moment from 'moment';
 
 import Calendar from './Calendar';
-import {
-  MonthCalendar,
-  WeekCalendar,
-  CalendarDay,
-  CalendarTime,
-  EventBlock,
-} from 'components/Calendar';
+import MonthCalendar, { CalendarDay } from 'components/MonthCalendar';
+import WeekCalendar, { CalendarTime } from 'components/WeekCalendar';
+import EventBlock from 'components/EventBlock';
 import { monthRange } from 'utils/dateUtils';
 
 
