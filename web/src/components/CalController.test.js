@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
+import Arrow from 'components/Arrow';
 import CalController from 'components/CalController';
 
 
@@ -14,10 +15,16 @@ describe('<CalController />', () => {
     onArrowClick,
     onTypeChange,
   };
+
+  let mountedWrapper;
+  afterAll(() => {
+    mountedWrapper.unmount();
+  })
+
   it('should be rendered properly', () => {
     const wrapper = shallow(<CalController {...props} />);
     expect(wrapper.find('.date-control')).toHaveLength(1);
-    expect(wrapper.find('.date-control > button')).toHaveLength(2);
+    expect(wrapper.find(Arrow)).toHaveLength(2);
     expect(wrapper.find('.date-control .title')).toHaveLength(1);
     expect(wrapper.find('.type-control')).toHaveLength(1);
     expect(wrapper.find('.type-control > button')).toHaveLength(2);
@@ -25,7 +32,7 @@ describe('<CalController />', () => {
 
   it('onClick event should be fired when button is clicked', () => {
     const wrapper = shallow(<CalController {...props} />);
-    wrapper.find('.btn.arrow').first().simulate('click');
+    wrapper.find(Arrow).first().simulate('click');
     wrapper.find('.btn.primary').first().simulate('click');
 
     expect(onArrowClick).toHaveBeenCalledTimes(1);
@@ -33,7 +40,7 @@ describe('<CalController />', () => {
   });
 
   it('should be matched with the snapshot', () => {
-    const wrapper = mount(<CalController {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    mountedWrapper = mount(<CalController {...props} />);
+    expect(mountedWrapper).toMatchSnapshot();
   })
 })

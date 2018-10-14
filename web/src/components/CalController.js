@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import Arrow from 'components/Arrow';
 import { getCalendarTitle } from 'utils/dateUtils';
 
 
@@ -14,19 +15,9 @@ const CalController = ({
   <article className="controller">
     <div className="controller-wrapper">
       <section className="date-control">
-        <button
-          name="previous"
-          type="button"
-          className="btn arrow left"
-          onClick={onArrowClick}
-        />
+        <Arrow name="previous" onClick={onArrowClick} />
         <div className="title">{getCalendarTitle(currentDate, type)}</div>
-        <button
-          name="next"
-          type="button"
-          className="btn arrow right"
-          onClick={onArrowClick}
-        />
+        <Arrow name="next" direction="next" onClick={onArrowClick} />
       </section>
       <section className="type-control">
         <button

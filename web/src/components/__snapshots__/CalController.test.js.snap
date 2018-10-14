@@ -40,8 +40,8 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
       <section
         className="date-control"
       >
-        <button
-          className="btn arrow left"
+        <Arrow
+          direction="previous"
           name="previous"
           onClick={
             [MockFunction] {
@@ -56,13 +56,30 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
               ],
             }
           }
-          type="button"
-        />
+        >
+          <button
+            className="arrow previous"
+            name="previous"
+            onClick={
+              [MockFunction] {
+                "calls": Array [
+                  Array [],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+          />
+        </Arrow>
         <div
           className="title"
         />
-        <button
-          className="btn arrow right"
+        <Arrow
+          direction="next"
           name="next"
           onClick={
             [MockFunction] {
@@ -77,8 +94,25 @@ exports[`<CalController /> should be matched with the snapshot 1`] = `
               ],
             }
           }
-          type="button"
-        />
+        >
+          <button
+            className="arrow next"
+            name="next"
+            onClick={
+              [MockFunction] {
+                "calls": Array [
+                  Array [],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+          />
+        </Arrow>
       </section>
       <section
         className="type-control"
