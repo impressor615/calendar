@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "web-precommit": "cd web && npm run precommit",
-    "server-precommit": "cd server && npm run test"
+    "server-precommit": "cd server && npm run test",
+    "web-install": "cd web && yarn install",
+    "server-install": "cd server && npm install",
+    "server-start": "cd server && npm run dev",
+    "web-start": "cd web && yarn dev",
+    "prepare": "npm-run-all web-install server-install",
+    "start": "npm-run-all --parallel server-start web-start"
   },
   "husky": {
     "hooks": {
@@ -13,6 +19,7 @@
   "author": "seonghyeon",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^1.1.2"
+    "husky": "^1.1.2",
+    "npm-run-all": "^4.1.3"
   }
 }
