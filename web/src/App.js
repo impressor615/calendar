@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import axios from 'axios';
 
 import CalController from 'components/CalController';
-import Calendar from 'components/Calendar';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
 import Notification from 'components/Notification';
 import { monthRange, weekRange } from 'utils/dateUtils';
 import { getErrorMsg } from 'utils/errorUtils';
+import { authAxios } from 'utils/fetchUtils';
 
+import { AppContext } from './AppContext';
+import Calendar from './Calendar';
 import CONSTANTS from './constants';
 
-const authAxios = axios.create({ headers: { 'x-access-token': process.env.REACT_APP_SECRET } });
-const { MOMENTS, NOTIFICATION } = CONSTANTS;
-const fetchEvents = (startDate, endDate) => {
-  const start_date = startDate.toISOString();
-  const end_date = endDate.toISOString();
-  return authAxios.get('/api/calendar', { params: { start_date, end_date }})
-    .then(res => res.data)
-};
 
+const { MOMENTS, NOTIFICATION } = CONSTANTS;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -32,25 +26,23 @@ class App extends Component {
     this.onDelete = this.onDelete.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onDrop = this.onDrop.bind(this);
     this.onToggleMsg = this.onToggleMsg.bind(this);
-    const defaultDate = moment().startOf('month');
-    const { start_date, end_date, items } = monthRange(defaultDate);
+    this.updateEvents = this.updateEvents.bind(this);
+    this.setLoading = this.setLoading.bind(this);
+    this.notify = this.notify.bind(this);
+
+    const initialDate = moment().startOf('month');
     this.state = {
       isOpen: false,
       isLoading: false,
+      date: initialDate,
       type: 'month',
-      date: defaultDate,
-      start_date,
-      end_date,
-      range: items,
-      calendar: [],
+      events: [],
       event: {
         _id: '',
         title: '',
-        start_date: defaultDate,
-        end_date: moment(defaultDate).add(1, 'hours'),
+        start_date: initialDate,
+        end_date: moment(initialDate).add(1, 'hours'),
       },
       message: {
         isOpen: false,
@@ -58,34 +50,6 @@ class App extends Component {
         type: 'danger',
       },
     };
-  }
-
-  componentDidMount() {
-    const { start_date, end_date } = this.state;
-    this.setLoading();
-    fetchEvents(start_date, end_date)
-    .then((result) => {
-      this.setLoading();
-      this.setState({
-        calendar: result,
-      });
-    })
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const prevStartDate = prevState.start_date;
-    const prevEndDate = prevState.end_date;
-    const { start_date, end_date } = this.state;
-    if (!prevStartDate.isSame(start_date) || !prevEndDate.isSame(end_date)) {
-      this.setLoading();
-      fetchEvents(start_date, end_date)
-      .then((result) => {
-        this.setLoading();
-        this.setState({
-          calendar: result,
-        });
-      });
-    }
   }
 
   componentWillUnmount() {
@@ -122,11 +86,8 @@ class App extends Component {
     this.updateCalendar(name, date, { type: name });
   }
 
-  onToggle(e, props = {}) {
-    e.stopPropagation();
-    const { type, dateObj, hour } = props;
+  onToggle(newEvent) {
     const { isOpen, event } = this.state;
-
     if (isOpen) {
       this.setState({
         isOpen: !isOpen,
@@ -134,31 +95,9 @@ class App extends Component {
           ...event,
           _id: '',
           title: '',
-        }
+        },
       });
       return;
-    }
-
-    const newEvent = {}
-    if (type === 'month') {
-      const currentHour = moment().hour();
-      const startDate = moment(dateObj.moment).hours(currentHour);
-      newEvent.start_date = startDate;
-      newEvent.end_date = moment(startDate).add(1, 'hours');
-    }
-
-    if (type === 'week') {
-      const startDate = moment(`${dateObj.year}-${dateObj.month}-${dateObj.date} ${hour}:00`, 'YYYY-M-D hh:mm');
-      newEvent.start_date = startDate;
-      newEvent.end_date = moment(startDate).add(1, 'hours');
-    }
-
-    if (type === 'event') {
-      const { start_date, end_date, title, _id } = dateObj;
-      newEvent._id = _id;
-      newEvent.title = title;
-      newEvent.start_date = moment(start_date);
-      newEvent.end_date = moment(end_date);
     }
 
     this.setState({
@@ -168,6 +107,10 @@ class App extends Component {
         ...newEvent,
       },
     });
+  }
+
+  updateEvents(newEvents) {
+    this.setState({ events: newEvents });
   }
 
   onTitleChange(e) {
@@ -195,7 +138,7 @@ class App extends Component {
 
   onUpdate(e) {
     e.preventDefault();
-    const { event, calendar } = this.state;
+    const { event, events } = this.state;
     const { _id, title, start_date, end_date } = event;
     if(!_id || !title || !start_date || !end_date) {
       return;
@@ -210,11 +153,11 @@ class App extends Component {
     authAxios.put(`/api/calendar/${_id}`, putData)
       .then(() => {
         this.setLoading();
-        const newCalendar = [ ...calendar ].filter(item => item._id !== _id);
+        const newEvents = [...events].filter(item => item._id !== _id);
         putData._id = _id;
-        newCalendar.push(putData);
+        newEvents.push(putData);
         this.setState({
-          calendar: newCalendar,
+          events: newEvents,
           isOpen: false,
           event: {
             ...event,
@@ -235,7 +178,7 @@ class App extends Component {
 
   onDelete(e) {
     e.preventDefault();
-    const { event, calendar } = this.state;
+    const { event, events } = this.state;
     const { _id } = event;
     if (!_id) {
       return;
@@ -245,9 +188,9 @@ class App extends Component {
     authAxios.delete(`/api/calendar/${_id}`)
     .then(() => {
       this.setLoading();
-      const newCalendar = [ ...calendar ].filter(item => item._id !== _id);
+      const newEvents = [...events].filter(item => item._id !== _id);
       this.setState({
-        calendar: newCalendar,
+        events: newEvents,
         isOpen: false,
         event: {
           ...event,
@@ -269,7 +212,7 @@ class App extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { event, calendar } = this.state;
+    const { event, events } = this.state;
     const { title, start_date, end_date } = event;
     const postData = {
       title,
@@ -280,15 +223,15 @@ class App extends Component {
     authAxios.post('/api/calendar', postData)
     .then((res) => {
       this.setLoading();
-      const newCalendar = [...calendar];
-      newCalendar.push({
+      const newEvents = [...events];
+      newEvents.push({
         _id: res.data._id,
         title,
         start_date,
         end_date,
       });
       this.setState({
-        calendar: newCalendar,
+        events: newEvents,
         isOpen: false,
         event: {
           ...event,
@@ -307,60 +250,7 @@ class App extends Component {
     });
   }
 
-  onDragStart(e, props) {
-    const { event } = props;
-    e.dataTransfer.setData('event_data', JSON.stringify(event));
-  }
-
-  onDrop(e, props) {
-    const { calendar } = this.state;
-    const { type, hour, dateObj } = props;
-    const { year, month, date } = dateObj;
-    const event = JSON.parse(e.dataTransfer.getData('event_data'));
-    const { title, _id, start_date } = event;
-
-    let newStartDate;
-    let newEndDate;
-    if (type === 'week') {
-      newStartDate = moment(`${year}-${month}-${date} ${hour}:00`, 'YYYY-M-D hh:mm');
-      newEndDate = moment(newStartDate).add(1, 'hours');
-    }
-
-    if (type === 'month') {
-      newStartDate = (
-        moment(start_date)
-          .year(year)
-          .month(month - 1)
-          .date(date)
-      );
-      newEndDate = moment(newStartDate).add(1, 'hours');
-    }
-
-    const putData = {
-      title,
-      start_date: newStartDate.toISOString(),
-      end_date: newEndDate.toISOString(),
-    };
-    this.setLoading();
-    authAxios.put(`/api/calendar/${_id}`, putData)
-      .then(() => {
-        this.setLoading();
-        const newCalendar = [...calendar].filter(item => item._id !== _id);
-        putData._id = _id
-        newCalendar.push(putData);
-        this.setState({ calendar: newCalendar });
-        this.notify({
-          type: 'success',
-          message: NOTIFICATION.update,
-        });
-      }, (error) => {
-        this.setLoading();
-        const message = getErrorMsg(error);
-        this.notify({ message });
-      });
-  }
-
-  onToggleMsg(e, props) {
+  onToggleMsg() {
     const { message } = this.state;
     const { isOpen } = message;
     this.setState({
@@ -379,16 +269,17 @@ class App extends Component {
   }
 
   updateCalendar(type, date, nextState) {
-    const { start_date, end_date, items } = (
-      (type === 'month')
-        ? monthRange(date)
-        : weekRange(date)
-    );
+    let range;
+    if (type === 'month') {
+      range = monthRange(date);
+    }
+
+    if (type === 'week') {
+      range = weekRange(date);
+    }
     this.setState({
       date,
-      start_date,
-      end_date,
-      range: items,
+      ...range,
       ...nextState
     });
   }
@@ -411,44 +302,45 @@ class App extends Component {
     const {
       type,
       date,
-      range,
-      isOpen,
       event,
-      calendar,
-      isLoading,
+      events,
+      isOpen,
       message,
+      isLoading,
     } = this.state;
     return (
-      <section className="container">
-        <CalController
-          type={type}
-          currentDate={date}
-          onArrowClick={this.onArrowClick}
-          onTypeChange={this.onTypeChange}
-        />
-        <Calendar
-          type={type}
-          range={range}
-          currentDate={date}
-          onToggle={this.onToggle}
-          onDragStart={this.onDragStart}
-          onDrop={this.onDrop}
-          data={calendar}
-        />
-        <CalModal
-          isOpen={isOpen}
-          isLoading={isLoading}
-          onToggle={this.onToggle}
-          onChange={this.onTitleChange}
-          onDateChange={this.onDateChange}
-          onUpdate={this.onUpdate}
-          onDelete={this.onDelete}
-          onSubmit={this.onSubmit}
-          event={event}
-        />
-        <Loading isOpen={isLoading} />
-        <Notification onToggle={this.onToggleMsg} {...message} />
-      </section>
+      <AppContext.Provider value={{
+        type,
+        events,
+        currentDate: date,
+        setLoading: this.setLoading,
+        onToggle: this.onToggle,
+        notify: this.notify,
+        updateEvents: this.updateEvents,
+      }}>
+        <section className="container">
+          <CalController
+            type={type}
+            currentDate={date}
+            onArrowClick={this.onArrowClick}
+            onTypeChange={this.onTypeChange}
+          />
+          <Calendar />
+          <CalModal
+            isOpen={isOpen}
+            isLoading={isLoading}
+            onToggle={this.onToggle}
+            onChange={this.onTitleChange}
+            onDateChange={this.onDateChange}
+            onUpdate={this.onUpdate}
+            onDelete={this.onDelete}
+            onSubmit={this.onSubmit}
+            event={event}
+          />
+          <Loading isOpen={isLoading} />
+          <Notification onToggle={this.onToggleMsg} {...message} />
+        </section>
+      </AppContext.Provider>
     );
   }
 }

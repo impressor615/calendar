@@ -7,7 +7,7 @@ export const monthRange = (date) => {
   return {
     start_date: startDate,
     end_date: endDate,
-    items: Array.from({ length: diff }).map((_, index) => {
+    range: Array.from({ length: diff }).map((_, index) => {
       const targetDate = moment(startDate).add(index, 'days');
       return {
         year: targetDate.year(),
@@ -26,7 +26,7 @@ export const weekRange = (date) => {
   return {
     start_date: startDate,
     end_date: endDate,
-    items: Array.from({ length: diff }).map((_, index) => {
+    range: Array.from({ length: diff }).map((_, index) => {
       const targetDate = moment(startDate).add(index, 'days');
       return {
         year: targetDate.year(),

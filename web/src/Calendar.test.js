@@ -1,14 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 
-import Calendar, {
+import Calendar from './Calendar';
+import {
   MonthCalendar,
   WeekCalendar,
   CalendarDay,
   CalendarTime,
   EventBlock,
 } from 'components/Calendar';
-import { weekRange, monthRange } from 'utils/dateUtils';
+import { monthRange } from 'utils/dateUtils';
 
 
 describe('<Calendar />', () => {
@@ -17,16 +18,14 @@ describe('<Calendar />', () => {
   const onDrop = jest.fn();
   const currentDate = moment('2018-10-13');
   const mRange = monthRange(currentDate);
-  const wRange = weekRange(currentDate);
   let wrapper;
   const props = {
     type: 'month',
     currentDate,
-    range: mRange.items,
     onToggle,
     onDragStart,
     onDrop,
-    data: [
+    events: [
       {
         title: 'title',
         start_date: moment(currentDate).toISOString(),
@@ -43,10 +42,11 @@ describe('<Calendar />', () => {
     wrapper = mount(<Calendar {...props} />);
     expect(wrapper.find('.calendar')).toHaveLength(1);
     expect(wrapper.find(MonthCalendar)).toHaveLength(1);
-    expect(wrapper.find(CalendarDay)).toHaveLength(props.range.length);
+    expect(wrapper.find(CalendarDay)).toHaveLength(mRange.range.length);
     expect(wrapper.find(EventBlock)).toHaveLength(1);
 
-    wrapper.setProps({ type: 'week', range: wRange.items });
+    wrapper.setProps({ type: 'week' });
+    wrapper.update();
     expect(wrapper.find(WeekCalendar)).toHaveLength(1);
     expect(wrapper.find(CalendarTime)).toHaveLength(24 * 7);
     expect(wrapper.find(EventBlock)).toHaveLength(1);
