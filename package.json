@@ -6,9 +6,9 @@
     "server-precommit": "cd server && npm run test",
     "web-install": "cd web && yarn install",
     "server-install": "cd server && npm install",
+    "postinstall": "npm-run-all web-install server-install",
     "server-start": "cd server && npm run dev",
     "web-start": "cd web && yarn dev",
-    "prepare": "npm-run-all web-install server-install",
     "start": "npm-run-all --parallel server-start web-start"
   },
   "husky": {
