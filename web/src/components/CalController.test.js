@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import Arrow from 'components/Arrow';
 import Button from 'components/Button';
-import CalController from 'components/CalController';
+import { PureCalController as CalController } from 'components/CalController';
 
 
 describe('<CalController />', () => {
@@ -17,11 +17,6 @@ describe('<CalController />', () => {
     onTypeChange,
   };
 
-  let mountedWrapper;
-  afterAll(() => {
-    mountedWrapper.unmount();
-  })
-
   it('should be rendered properly', () => {
     const wrapper = shallow(<CalController {...props} />);
     expect(wrapper.find('.date-control')).toHaveLength(1);
@@ -31,7 +26,7 @@ describe('<CalController />', () => {
     expect(wrapper.find(Button)).toHaveLength(2);
   });
 
-  it('onClick event should be fired when button is clicked', () => {
+  it('methods should be fired properly', () => {
     const wrapper = shallow(<CalController {...props} />);
     wrapper.find(Arrow).first().simulate('click');
     wrapper.find(Button).first().simulate('click');
@@ -41,7 +36,7 @@ describe('<CalController />', () => {
   });
 
   it('should be matched with the snapshot', () => {
-    mountedWrapper = mount(<CalController {...props} />);
-    expect(mountedWrapper).toMatchSnapshot();
+    const wrapper = mount(<CalController {...props} />);
+    expect(wrapper).toMatchSnapshot();
   })
 })

@@ -5,7 +5,6 @@ import CalController from 'components/CalController';
 import CalModal from 'components/CalModal';
 import Loading from 'components/Loading';
 import Notification from 'components/Notification';
-import { monthRange, weekRange } from 'utils/dateUtils';
 import { getErrorMsg } from 'utils/errorUtils';
 import { authAxios } from 'utils/fetchUtils';
 
@@ -62,12 +61,17 @@ class App extends Component {
     e.stopPropagation();
     const { name } = e.currentTarget;
     const { type, date } = this.state;
-    const newDate = (
-      (name === 'next')
-        ? moment(date).add(1, MOMENTS[type])
-        : moment(date).subtract(1, MOMENTS[type])
-    );
-    this.updateCalendar(type, newDate);
+
+    let newDate;
+    if (name === 'next') {
+      newDate = moment(date).add(1, MOMENTS[type]);
+    }
+
+    if (name === 'previous') {
+      newDate = moment(date).subtract(1, MOMENTS[type]);
+    }
+
+    this.setState({ date: newDate });
   }
 
   onTypeChange(e) {
@@ -78,12 +82,16 @@ class App extends Component {
       return;
     }
 
-    const date = (
-      (name === 'month')
-        ? moment().startOf('month')
-        : moment().startOf('week')
-    );
-    this.updateCalendar(name, date, { type: name });
+    let newDate;
+    if (name === 'month') {
+      newDate = moment().startOf('month');
+    }
+
+    if (name === 'week') {
+      newDate = moment().startOf('week');
+    }
+
+    this.setState({ type: name, date: newDate });
   }
 
   onToggle(newEvent) {
@@ -268,22 +276,6 @@ class App extends Component {
     });
   }
 
-  updateCalendar(type, date, nextState) {
-    let range;
-    if (type === 'month') {
-      range = monthRange(date);
-    }
-
-    if (type === 'week') {
-      range = weekRange(date);
-    }
-    this.setState({
-      date,
-      ...range,
-      ...nextState
-    });
-  }
-
   notify(data) {
     const { message } = this.state;
     this.setState({
@@ -320,8 +312,6 @@ class App extends Component {
       }}>
         <section className="container">
           <CalController
-            type={type}
-            currentDate={date}
             onArrowClick={this.onArrowClick}
             onTypeChange={this.onTypeChange}
           />

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { withContext } from 'AppContext';
 import Arrow from 'components/Arrow';
 import Button from 'components/Button';
 import { getCalendarTitle } from 'utils/dateUtils';
@@ -34,4 +35,5 @@ CalController.propTypes = {
   onTypeChange: PropTypes.func.isRequired,
 }
 
-export default CalController;
+export default withContext(CalController);
+export const PureCalController = CalController;
