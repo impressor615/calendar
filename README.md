@@ -18,9 +18,6 @@ cd calendar
 # 로컬 머신에 Node >= 6 버전 이상이 필요합니다.
 # 어플리케이션을 위한 dependencies들을 설치합니다.
 npm install
-
-# web, server 어플리케이션의 각각을 위한 dependencies들을 설치합니다.
-npm run prepare
 ```
 
 ## 실행
